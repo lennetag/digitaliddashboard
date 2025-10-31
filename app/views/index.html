@@ -53,6 +53,11 @@
               Roadmap
             </a>
           </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#services">
+              Services
+            </a>
+          </li>
         </ul>
 
         <!-- Adoption & Reach Tab -->
@@ -176,17 +181,14 @@
             </tbody>
           </table>
 
-          <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-region">
-            <div class="govuk-accordion__section">
-              <div class="govuk-accordion__section-header">
-                <h2 class="govuk-accordion__section-heading">
-                  <span class="govuk-accordion__section-button" id="accordion-region-heading-1">
-                    View as chart
-                  </span>
-                </h2>
-              </div>
-              <div id="accordion-region-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-region-heading-1">
-                <h4 class="govuk-heading-s">Registered users by region</h4>
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                View as chart
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <h4 class="govuk-heading-s">Registered users by region</h4>
                 <div class="simple-bar-chart">
                   <div class="chart-row">
                     <div class="chart-label">London</div>
@@ -231,9 +233,8 @@
                     </div>
                   </div>
                 </div>
-              </div>
             </div>
-          </div>
+          </details>
 
           <h3 class="govuk-heading-m govuk-!-margin-top-6">Age distribution</h3>
           <table class="govuk-table responsive-table">
@@ -285,17 +286,14 @@
             </tbody>
           </table>
 
-          <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-age">
-            <div class="govuk-accordion__section">
-              <div class="govuk-accordion__section-header">
-                <h2 class="govuk-accordion__section-heading">
-                  <span class="govuk-accordion__section-button" id="accordion-age-heading-1">
-                    View as chart
-                  </span>
-                </h2>
-              </div>
-              <div id="accordion-age-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-age-heading-1">
-                <h4 class="govuk-heading-s">Users by age group</h4>
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                View as chart
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <h4 class="govuk-heading-s">Users by age group</h4>
                 <div class="simple-bar-chart">
                   <div class="chart-row">
                     <div class="chart-label">18-24</div>
@@ -340,9 +338,8 @@
                     </div>
                   </div>
                 </div>
-              </div>
             </div>
-          </div>
+          </details>
         </div>
 
         <!-- Economic & Efficiency Impact Tab -->
@@ -356,7 +353,7 @@
             <div class="govuk-grid-column-one-quarter">
               <div class="dashboard-metric">
                 <h3 class="govuk-heading-m govuk-!-margin-bottom-2">Cost per verified user</h3>
-                <p class="metric-value govuk-!-font-size-48 govuk-!-font-weight-bold govuk-!-margin-bottom-1">£2.85</p>
+                <p class="metric-value govuk-!-font-size-48 govuk-!-font-weight-bold govuk-!-margin-bottom-1">£0.03</p>
                 <p class="govuk-body-s govuk-!-margin-bottom-0">
                   <strong class="govuk-tag govuk-tag--green">Below target</strong>
                 </p>
@@ -459,6 +456,54 @@
             </tbody>
           </table>
 
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                View as chart
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <h4 class="govuk-heading-s">Annual cost breakdown (% of total)</h4>
+              <div class="simple-bar-chart">
+                <div class="chart-row">
+                  <div class="chart-label">Infrastructure & Hosting</div>
+                  <div class="chart-bar-container">
+                    <div class="chart-bar" style="width: 100%;"></div>
+                    <span class="chart-value">35%</span>
+                  </div>
+                </div>
+                <div class="chart-row">
+                  <div class="chart-label">Development & Maintenance</div>
+                  <div class="chart-bar-container">
+                    <div class="chart-bar" style="width: 86%;"></div>
+                    <span class="chart-value">30%</span>
+                  </div>
+                </div>
+                <div class="chart-row">
+                  <div class="chart-label">Identity Verification Services</div>
+                  <div class="chart-bar-container">
+                    <div class="chart-bar" style="width: 57%;"></div>
+                    <span class="chart-value">20%</span>
+                  </div>
+                </div>
+                <div class="chart-row">
+                  <div class="chart-label">Support & Operations</div>
+                  <div class="chart-bar-container">
+                    <div class="chart-bar" style="width: 29%;"></div>
+                    <span class="chart-value">10%</span>
+                  </div>
+                </div>
+                <div class="chart-row">
+                  <div class="chart-label">Compliance & Security</div>
+                  <div class="chart-bar-container">
+                    <div class="chart-bar" style="width: 14%;"></div>
+                    <span class="chart-value">5%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+
           <h3 class="govuk-heading-m govuk-!-margin-top-6">Benefits realisation</h3>
           <table class="govuk-table">
             <caption class="govuk-table__caption govuk-table__caption--s">Financial year 2025/26 (projected)</caption>
@@ -482,12 +527,6 @@
                 <td class="govuk-table__cell govuk-table__cell--numeric">£6,200,000</td>
                 <td class="govuk-table__cell govuk-table__cell--numeric">Medium (70%)</td>
                 <td class="govuk-table__cell">Reduced manual verification workload</td>
-              </tr>
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell">User time savings</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">£4,800,000</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">Medium (65%)</td>
-                <td class="govuk-table__cell">Faster authentication vs traditional methods</td>
               </tr>
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell">Error reduction</td>
@@ -656,6 +695,64 @@
               </tr>
             </tbody>
           </table>
+
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                View as chart
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <h4 class="govuk-heading-s">Authentication success rate trend (last 7 days)</h4>
+              <div class="line-graph">
+                <div class="line-graph__container">
+                  <svg class="line-graph__svg" viewBox="0 0 700 300" preserveAspectRatio="xMidYMid meet">
+                    <!-- Grid lines -->
+                    <line class="line-graph__grid-line" x1="60" y1="40" x2="660" y2="40"/>
+                    <line class="line-graph__grid-line" x1="60" y1="100" x2="660" y2="100"/>
+                    <line class="line-graph__grid-line" x1="60" y1="160" x2="660" y2="160"/>
+                    <line class="line-graph__grid-line" x1="60" y1="220" x2="660" y2="220"/>
+                    
+                    <!-- Axes -->
+                    <line class="line-graph__axis" x1="60" y1="280" x2="660" y2="280"/>
+                    <line class="line-graph__axis" x1="60" y1="20" x2="60" y2="280"/>
+                    
+                    <!-- Y-axis labels -->
+                    <text class="line-graph__label" x="45" y="25" text-anchor="end">99%</text>
+                    <text class="line-graph__label" x="45" y="105" text-anchor="end">98%</text>
+                    <text class="line-graph__label" x="45" y="165" text-anchor="end">97.5%</text>
+                    <text class="line-graph__label" x="45" y="225" text-anchor="end">97%</text>
+                    <text class="line-graph__label" x="45" y="285" text-anchor="end">96.5%</text>
+                    
+                    <!-- Line path (Success Rate: 97.7%, 97.6%, 98.2%, 97.8%, 97.5%, 97.9%, 98.1%) -->
+                    <polyline class="line-graph__line" 
+                              points="80,132 180,148 280,84 380,116 480,180 580,100 660,68"/>
+                    
+                    <!-- Data points -->
+                    <circle class="line-graph__point" cx="80" cy="132" r="5"/>
+                    <circle class="line-graph__point" cx="180" cy="148" r="5"/>
+                    <circle class="line-graph__point" cx="280" cy="84" r="5"/>
+                    <circle class="line-graph__point" cx="380" cy="116" r="5"/>
+                    <circle class="line-graph__point" cx="480" cy="180" r="5"/>
+                    <circle class="line-graph__point" cx="580" cy="100" r="5"/>
+                    <circle class="line-graph__point" cx="660" cy="68" r="5"/>
+                    
+                    <!-- X-axis labels (dates) -->
+                    <text class="line-graph__label" x="80" y="300" text-anchor="middle">24 Oct</text>
+                    <text class="line-graph__label" x="180" y="300" text-anchor="middle">25 Oct</text>
+                    <text class="line-graph__label" x="280" y="300" text-anchor="middle">26 Oct</text>
+                    <text class="line-graph__label" x="380" y="300" text-anchor="middle">27 Oct</text>
+                    <text class="line-graph__label" x="480" y="300" text-anchor="middle">28 Oct</text>
+                    <text class="line-graph__label" x="580" y="300" text-anchor="middle">29 Oct</text>
+                    <text class="line-graph__label" x="660" y="300" text-anchor="middle">30 Oct</text>
+                  </svg>
+                </div>
+                <div class="line-graph__legend">
+                  <span class="line-graph__legend-item">Authentication success rate</span>
+                </div>
+              </div>
+            </div>
+          </details>
         </div>
 
         <!-- Roadmap Tab -->
@@ -800,6 +897,158 @@
           <p class="govuk-body govuk-!-margin-top-4">
             <a href="mailto:digital-identity@digital.cabinet-office.gov.uk" class="govuk-link">Contact the Digital Identity team</a>
           </p>
+        </div>
+
+        <!-- Services Tab -->
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="services">
+          <h2 class="govuk-heading-l">Services</h2>
+          <p class="govuk-body">
+            <strong>Goal:</strong> Track which government services are using or planning to use Digital ID.
+          </p>
+
+          <h3 class="govuk-heading-m">Service integration summary</h3>
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-half">
+              <div class="dashboard-metric">
+                <h4 class="govuk-heading-s govuk-!-margin-bottom-2">Total services</h4>
+                <p class="metric-value govuk-!-font-size-48 govuk-!-font-weight-bold govuk-!-margin-bottom-1">22</p>
+                <p class="govuk-body-s govuk-!-margin-bottom-0">Live and planned</p>
+              </div>
+            </div>
+            <div class="govuk-grid-column-one-half">
+              <div class="dashboard-metric">
+                <h4 class="govuk-heading-s govuk-!-margin-bottom-2">Departments</h4>
+                <p class="metric-value govuk-!-font-size-48 govuk-!-font-weight-bold govuk-!-margin-bottom-1">5</p>
+                <p class="govuk-body-s govuk-!-margin-bottom-0">Using Digital ID</p>
+              </div>
+            </div>
+          </div>
+
+          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-half">
+              <h3 class="govuk-heading-m">Services using Digital ID</h3>
+              <p class="govuk-body">
+                <strong class="govuk-tag govuk-tag--green">Live</strong>
+                <span class="govuk-!-margin-left-2">6 services</span>
+              </p>
+              
+              <ul class="govuk-list">
+                <li class="govuk-!-margin-bottom-3">
+                  <a href="#" class="govuk-link govuk-!-font-weight-bold">Basic criminal record check</a>
+                  <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Disclosure and Barring Service</p>
+                </li>
+                <li class="govuk-!-margin-bottom-3">
+                  <a href="#" class="govuk-link govuk-!-font-weight-bold">Create a UK catch certificate</a>
+                  <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Marine Management Organisation</p>
+                </li>
+                <li class="govuk-!-margin-bottom-3">
+                  <a href="#" class="govuk-link govuk-!-font-weight-bold">Manage apprenticeships</a>
+                  <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Department for Education</p>
+                </li>
+                <li class="govuk-!-margin-bottom-3">
+                  <a href="#" class="govuk-link govuk-!-font-weight-bold">Claim Child Benefit</a>
+                  <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">HM Revenue & Customs</p>
+                </li>
+                <li class="govuk-!-margin-bottom-3">
+                  <a href="#" class="govuk-link govuk-!-font-weight-bold">Get your State Pension</a>
+                  <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Department for Work and Pensions</p>
+                </li>
+                <li class="govuk-!-margin-bottom-3">
+                  <a href="#" class="govuk-link govuk-!-font-weight-bold">Comply with UK REACH</a>
+                  <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Health and Safety Executive</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="govuk-grid-column-one-half">
+              <h3 class="govuk-heading-m">Services planned for Digital ID</h3>
+              <p class="govuk-body">
+                <strong class="govuk-tag govuk-tag--blue">Planned</strong>
+                <span class="govuk-!-margin-left-2">16 services</span>
+              </p>
+              
+              <ul class="govuk-list">
+                <li class="govuk-!-margin-bottom-3">
+                  <a href="#" class="govuk-link govuk-!-font-weight-bold">Apply for Attendance Allowance</a>
+                  <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Department for Work and Pensions</p>
+                </li>
+                <li class="govuk-!-margin-bottom-3">
+                  <a href="#" class="govuk-link govuk-!-font-weight-bold">Apply for Bereavement Support Payment</a>
+                  <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Department for Work and Pensions</p>
+                </li>
+                <li class="govuk-!-margin-bottom-3">
+                  <a href="#" class="govuk-link govuk-!-font-weight-bold">Apply for New Style Employment and Support Allowance (New Style ESA)</a>
+                  <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Department for Work and Pensions</p>
+                </li>
+                <li class="govuk-!-margin-bottom-3">
+                  <a href="#" class="govuk-link govuk-!-font-weight-bold">Apply for New Style Jobseeker's Allowance</a>
+                  <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Department for Work and Pensions</p>
+                </li>
+                <li class="govuk-!-margin-bottom-3">
+                  <a href="#" class="govuk-link govuk-!-font-weight-bold">Apply for Pension Credit</a>
+                  <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Department for Work and Pensions</p>
+                </li>
+                <li class="govuk-!-margin-bottom-3">
+                  <a href="#" class="govuk-link govuk-!-font-weight-bold">Apply for Personal Independence Payment</a>
+                  <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Department for Work and Pensions</p>
+                </li>
+                <li class="govuk-!-margin-bottom-3">
+                  <a href="#" class="govuk-link govuk-!-font-weight-bold">Claim Disability Living Allowance For A Child</a>
+                  <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Department for Work and Pensions</p>
+                </li>
+                <li class="govuk-!-margin-bottom-3">
+                  <a href="#" class="govuk-link govuk-!-font-weight-bold">Claim Maternity Allowance</a>
+                  <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Department for Work and Pensions</p>
+                </li>
+                <li class="govuk-!-margin-bottom-3">
+                  <a href="#" class="govuk-link govuk-!-font-weight-bold">Get help with funeral costs (Funeral Expenses Payment)</a>
+                  <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Department for Work and Pensions</p>
+                </li>
+                <li class="govuk-!-margin-bottom-3">
+                  <a href="#" class="govuk-link govuk-!-font-weight-bold">Apply for an Access to Work Grant</a>
+                  <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Department for Work and Pensions</p>
+                </li>
+              </ul>
+
+              <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Show 6 more services
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                  <ul class="govuk-list">
+                    <li class="govuk-!-margin-bottom-3">
+                      <a href="#" class="govuk-link govuk-!-font-weight-bold">Basic criminal record check</a>
+                      <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Disclosure and Barring Service</p>
+                    </li>
+                    <li class="govuk-!-margin-bottom-3">
+                      <a href="#" class="govuk-link govuk-!-font-weight-bold">Create a UK catch certificate</a>
+                      <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Marine Management Organisation</p>
+                    </li>
+                    <li class="govuk-!-margin-bottom-3">
+                      <a href="#" class="govuk-link govuk-!-font-weight-bold">Manage apprenticeships</a>
+                      <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Department for Education</p>
+                    </li>
+                    <li class="govuk-!-margin-bottom-3">
+                      <a href="#" class="govuk-link govuk-!-font-weight-bold">Claim Child Benefit</a>
+                      <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">HM Revenue & Customs</p>
+                    </li>
+                    <li class="govuk-!-margin-bottom-3">
+                      <a href="#" class="govuk-link govuk-!-font-weight-bold">Get your State Pension</a>
+                      <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Department for Work and Pensions</p>
+                    </li>
+                    <li class="govuk-!-margin-bottom-3">
+                      <a href="#" class="govuk-link govuk-!-font-weight-bold">Comply with UK REACH</a>
+                      <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Health and Safety Executive</p>
+                    </li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+          </div>
         </div>
       </div>
     </div>

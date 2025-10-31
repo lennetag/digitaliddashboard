@@ -146,8 +146,166 @@
   }
 }
 
-// Accordion styles for charts
-.govuk-accordion__section-content {
+// Style details component as GOV.UK secondary button
+.govuk-details {
+  margin-top: govuk-spacing(4);
+  margin-bottom: govuk-spacing(6);
+}
+
+.govuk-details__summary {
+  // Base GOV.UK button styles
+  font-family: "GDS Transport", arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.1875;
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  width: auto;
+  margin-top: 0;
+  margin-bottom: 22px;
+  padding: 8px 15px 7px;
+  border: 2px solid transparent;
+  border-radius: 0;
+  color: govuk-colour("black");
+  background-color: govuk-colour("light-grey");
+  box-shadow: 0 2px 0 govuk-colour("dark-grey");
+  text-align: center;
+  vertical-align: top;
+  cursor: pointer;
+  -webkit-appearance: none;
+  
+  @media (min-width: 40.0625em) {
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1;
+    margin-bottom: 32px;
+  }
+  
+  &:hover {
+    background-color: #dbdad9;
+  }
+  
+  &:active {
+    top: 2px;
+    box-shadow: none;
+  }
+  
+  &:focus {
+    border-color: govuk-colour("yellow");
+    outline: 3px solid transparent;
+    box-shadow: inset 0 0 0 1px govuk-colour("yellow");
+  }
+  
+  &:focus:not(:active):not(:hover) {
+    border-color: govuk-colour("yellow");
+    color: govuk-colour("black");
+    background-color: govuk-colour("yellow");
+    box-shadow: 0 2px 0 govuk-colour("black");
+  }
+  
+  // Hide the default marker/arrow
+  &::-webkit-details-marker {
+    display: none;
+  }
+  
+  &::marker {
+    display: none;
+  }
+  
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    bottom: -6px;
+    left: -2px;
+    background: transparent;
+  }
+}
+
+.govuk-details__summary-text {
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.govuk-details__text {
   padding-top: govuk-spacing(3);
+  border: none;
+}
+
+// Simple line graph styles
+.line-graph {
+  margin: govuk-spacing(4) 0;
+  padding: govuk-spacing(4);
+  background-color: govuk-colour("light-grey");
+  position: relative;
+}
+
+.line-graph__container {
+  position: relative;
+  height: 300px;
+  margin-bottom: govuk-spacing(4);
+}
+
+.line-graph__svg {
+  width: 100%;
+  height: 100%;
+}
+
+.line-graph__line {
+  fill: none;
+  stroke: govuk-colour("blue");
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.line-graph__point {
+  fill: govuk-colour("blue");
+  stroke: govuk-colour("white");
+  stroke-width: 2;
+}
+
+.line-graph__grid-line {
+  stroke: govuk-colour("mid-grey");
+  stroke-width: 1;
+  stroke-dasharray: 2, 2;
+}
+
+.line-graph__axis {
+  stroke: govuk-colour("dark-grey");
+  stroke-width: 1;
+}
+
+.line-graph__label {
+  font-size: 14px;
+  fill: govuk-colour("black");
+}
+
+.line-graph__legend {
+  margin-top: govuk-spacing(3);
+  padding-top: govuk-spacing(3);
+  border-top: 1px solid govuk-colour("mid-grey");
+}
+
+.line-graph__legend-item {
+  display: inline-block;
+  margin-right: govuk-spacing(4);
+  font-size: 16px;
+  
+  &:before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 3px;
+    background-color: govuk-colour("blue");
+    margin-right: govuk-spacing(1);
+    vertical-align: middle;
+  }
 }
 
