@@ -1,0 +1,72 @@
+// Import GOV.UK Frontend
+@import "node_modules/govuk-frontend/dist/govuk/all";
+
+// Phase banner spacing adjustments
+.govuk-phase-banner {
+  padding-top: 0;
+  margin-top: -10px;
+  margin-bottom: govuk-spacing(6);
+}
+
+// Main heading spacing
+.govuk-heading-xl {
+  margin-top: govuk-spacing(8);
+}
+
+// Dashboard specific styles
+.dashboard-metric {
+  padding: govuk-spacing(4);
+  border-left: 4px solid govuk-colour("blue");
+  background-color: govuk-colour("light-grey");
+  margin-bottom: govuk-spacing(4);
+  min-height: 180px;
+  
+  h3 {
+    font-size: 19px;
+    line-height: 1.3;
+  }
+  
+  .metric-value {
+    color: govuk-colour("black");
+    line-height: 1.1;
+  }
+}
+
+// Tag color variants
+.govuk-tag {
+  font-weight: 700;
+  color: govuk-colour("white");
+}
+
+.govuk-tag--green {
+  background-color: govuk-colour("green");
+  color: govuk-colour("white");
+}
+
+.govuk-tag--blue {
+  background-color: govuk-colour("blue");
+  color: govuk-colour("white");
+}
+
+.govuk-tag--grey {
+  background-color: govuk-colour("dark-grey");
+  color: govuk-colour("white");
+}
+
+// Table improvements for dashboard
+.govuk-table {
+  margin-top: govuk-spacing(4);
+  
+  &__cell--numeric,
+  &__header--numeric {
+    text-align: right;
+  }
+}
+
+// Responsive adjustments for dashboard
+@media (max-width: 48.0525em) {
+  .dashboard-metric {
+    margin-bottom: govuk-spacing(3);
+  }
+}
+
