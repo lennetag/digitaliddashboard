@@ -68,5 +68,86 @@
   .dashboard-metric {
     margin-bottom: govuk-spacing(3);
   }
+  
+  // Stack metrics vertically on mobile
+  .govuk-grid-column-one-quarter {
+    width: 100%;
+    float: none;
+  }
+  
+  // Responsive tables - convert to cards on mobile
+  .govuk-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  // Make table cells stack like cards
+  .responsive-table {
+    thead {
+      display: none;
+    }
+    
+    tbody tr {
+      display: block;
+      margin-bottom: govuk-spacing(4);
+      border: 1px solid govuk-colour("mid-grey");
+      padding: govuk-spacing(3);
+      background-color: govuk-colour("light-grey");
+    }
+    
+    tbody td {
+      display: block;
+      text-align: left !important;
+      padding: govuk-spacing(2) 0;
+      border: none;
+      
+      &:before {
+        content: attr(data-label);
+        font-weight: 700;
+        display: block;
+        margin-bottom: govuk-spacing(1);
+      }
+    }
+  }
+}
+
+// Simple bar chart styles
+.simple-bar-chart {
+  margin: govuk-spacing(4) 0;
+  
+  .chart-row {
+    margin-bottom: govuk-spacing(3);
+  }
+  
+  .chart-label {
+    font-weight: 700;
+    margin-bottom: govuk-spacing(1);
+    font-size: 16px;
+  }
+  
+  .chart-bar-container {
+    display: flex;
+    align-items: center;
+    gap: govuk-spacing(2);
+  }
+  
+  .chart-bar {
+    height: 30px;
+    background-color: govuk-colour("blue");
+    transition: width 0.3s ease;
+    min-width: 2px;
+  }
+  
+  .chart-value {
+    font-weight: 700;
+    font-size: 16px;
+    min-width: 60px;
+  }
+}
+
+// Accordion styles for charts
+.govuk-accordion__section-content {
+  padding-top: govuk-spacing(3);
 }
 
