@@ -264,6 +264,13 @@
           color: '#00703c',
           text: sharingText
         });
+        
+        // Add privacy protection when data IS shared
+        privacyItems.push({
+          icon: '✕',
+          color: '#d4351c',
+          text: 'No other information will be shared and cannot be accessed by the checker, like your immigration status or driving licence status'
+        });
       }
       
       // Recording item
@@ -280,6 +287,19 @@
           text: 'This check will not be recorded against your Digital ID'
         });
       }
+      
+      // Always show these security items
+      privacyItems.push({
+        icon: '✓',
+        color: '#00703c',
+        text: 'Your Digital ID is protected and is never shared, and cannot be reused'
+      });
+      
+      privacyItems.push({
+        icon: '✓',
+        color: '#00703c',
+        text: 'This link will only work once, then is deleted'
+      });
       
       // Populate the list
       privacyItems.forEach(function(item) {

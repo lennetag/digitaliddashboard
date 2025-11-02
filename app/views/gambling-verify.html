@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LuckyBet Casino - Online Casino & Sports Betting</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #ffffff;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #ffd700;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #ffd700;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+
+    .nav-buttons button {
+      background: transparent;
+      border: 2px solid #ffd700;
+      color: #ffd700;
+      padding: 10px 20px;
+      margin-left: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* Main Content (Blurred) */
+    .main-content {
+      padding: 40px;
+      transition: filter 0.3s ease;
+    }
+
+    .main-content.blurred {
+      filter: blur(10px);
+      pointer-events: none;
+    }
+
+    .banner {
+      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+      padding: 60px;
+      border-radius: 15px;
+      text-align: center;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .banner h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .game-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .game-card h3 {
+      color: #ffd700;
+      margin-bottom: 10px;
+    }
+
+    /* Modal Overlay */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Modal */
+    .modal {
+      background: #ffffff;
+      color: #333;
+      border-radius: 15px;
+      padding: 40px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+
+    .modal h2 {
+      color: #1a1a2e;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    .modal p {
+      color: #555;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .verification-options {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .option-button {
+      background: #ffd700;
+      color: #1a1a2e;
+      border: none;
+      padding: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      text-align: left;
+      position: relative;
+    }
+
+    .option-button:hover {
+      background: #ffed4e;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    }
+
+    .option-button.secondary {
+      background: #f0f0f0;
+      color: #555;
+    }
+
+    .option-button.secondary:hover {
+      background: #e0e0e0;
+    }
+
+    .option-button small {
+      display: block;
+      font-size: 12px;
+      font-weight: normal;
+      margin-top: 5px;
+      opacity: 0.8;
+    }
+
+    /* Link Input Step */
+    .link-input-step {
+      display: none;
+    }
+
+    .link-input-step.active {
+      display: block;
+    }
+
+    .back-button {
+      background: transparent;
+      border: none;
+      color: #666;
+      cursor: pointer;
+      font-size: 14px;
+      margin-bottom: 20px;
+      padding: 5px 0;
+    }
+
+    .back-button:hover {
+      color: #333;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.2s;
+    }
+
+    .input-group input:focus {
+      outline: none;
+      border-color: #ffd700;
+    }
+
+    .submit-button {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      width: 100%;
+      transition: background 0.2s;
+    }
+
+    .submit-button:hover {
+      background: #218838;
+    }
+
+    /* Success Step */
+    .success-step {
+      display: none;
+      text-align: center;
+    }
+
+    .success-step.active {
+      display: block;
+    }
+
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      background: #28a745;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 48px;
+    }
+
+    .success-step h2 {
+      color: #28a745;
+      margin-bottom: 15px;
+    }
+
+    .success-step p {
+      margin-bottom: 15px;
+    }
+
+    .privacy-notice {
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 4px solid #28a745;
+      text-align: left;
+      margin: 20px 0;
+    }
+
+    .privacy-notice strong {
+      color: #28a745;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .continue-button {
+      background: #1a1a2e;
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 20px;
+    }
+
+    .continue-button:hover {
+      background: #2d3a5f;
+    }
+
+    @media (max-width: 640px) {
+      .header {
+        padding: 15px 20px;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+
+      .banner {
+        padding: 30px 20px;
+      }
+
+      .banner h1 {
+        font-size: 32px;
+      }
+
+      .modal {
+        padding: 25px;
+      }
+
+      .modal h2 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo">🎰 LuckyBet Casino</div>
+    <div class="nav-buttons">
+      <button>Sign In</button>
+      <button>Register</button>
+    </div>
+  </div>
+
+  <!-- Main Content (Blurred by default) -->
+  <div class="main-content blurred" id="main-content">
+    <div class="banner">
+      <h1>🎲 Welcome to LuckyBet Casino! 🎲</h1>
+      <p style="font-size: 20px;">The UK's Premier Online Casino & Sports Betting Platform</p>
+      <p style="font-size: 16px; margin-top: 10px;">Join thousands of players winning big every day!</p>
+    </div>
+
+    <h2 style="margin-bottom: 20px;">🔥 Popular Games</h2>
+    <div class="games-grid">
+      <div class="game-card">
+        <h3>🎰 Mega Fortune Slots</h3>
+        <p>Progressive Jackpot</p>
+        <p style="color: #ffd700; font-size: 20px; margin-top: 10px;">£2.4M Jackpot</p>
+      </div>
+      <div class="game-card">
+        <h3>♠️ Blackjack</h3>
+        <p>Classic Table Game</p>
+        <p style="margin-top: 10px;">Live Dealers Available</p>
+      </div>
+      <div class="game-card">
+        <h3>⚽ Sports Betting</h3>
+        <p>Live In-Play Betting</p>
+        <p style="margin-top: 10px;">Best Odds Guaranteed</p>
+      </div>
+      <div class="game-card">
+        <h3>🎰 Roulette</h3>
+        <p>European & American</p>
+        <p style="margin-top: 10px;">Live Tables Open 24/7</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Overlay -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      
+      <!-- Initial Step -->
+      <div id="initial-step">
+        <h2>Age Verification Required</h2>
+        <p>To access LuckyBet Casino, you must be 18 years or older. Please verify your age to continue.</p>
+        
+        <div class="verification-options">
+          <button class="option-button" onclick="showLinkInput()">
+            <span>✓ Use Government Digital ID</span>
+            <small>Verify instantly without sharing personal information</small>
+          </button>
+          <button class="option-button secondary" onclick="alert('This would redirect to login page')">
+            <span>Log in to your LuckyBet account</span>
+            <small>Already have an account? Sign in here</small>
+          </button>
+        </div>
+      </div>
+
+      <!-- Link Input Step -->
+      <div class="link-input-step" id="link-input-step">
+        <button class="back-button" onclick="showInitialStep()">← Back</button>
+        
+        <h2>Verify with Digital ID</h2>
+        <p>Paste your Government Digital ID verification link below. This link proves you are over 18 without revealing any personal information.</p>
+        
+        <div class="input-group">
+          <label for="verification-link">Verification Link</label>
+          <input 
+            type="text" 
+            id="verification-link" 
+            placeholder="Paste your verification link here..."
+            value="">
+        </div>
+        
+        <button class="submit-button" onclick="verifyLink()">Verify Age</button>
+      </div>
+
+      <!-- Success Step -->
+      <div class="success-step" id="success-step">
+        <div class="success-icon">✓</div>
+        <h2>Age Verified Successfully!</h2>
+        <p>Thank you for verifying your age using Government Digital ID.</p>
+        
+        <div class="privacy-notice">
+          <strong>🔒 Privacy Protected</strong>
+          <p style="font-size: 14px; color: #666;">No personal data has been saved. Your identity is not tracked and cannot be tracked. We only confirmed you are over 18.</p>
+        </div>
+        
+        <button class="continue-button" onclick="closeModal()">Continue to Casino</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function showLinkInput() {
+      document.getElementById('initial-step').style.display = 'none';
+      document.getElementById('link-input-step').classList.add('active');
+    }
+
+    function showInitialStep() {
+      document.getElementById('initial-step').style.display = 'block';
+      document.getElementById('link-input-step').classList.remove('active');
+    }
+
+    function verifyLink() {
+      var link = document.getElementById('verification-link').value;
+      
+      if (!link || link.trim() === '') {
+        alert('Please paste a verification link');
+        return;
+      }
+
+      // Simulate verification delay
+      document.querySelector('.submit-button').textContent = 'Verifying...';
+      document.querySelector('.submit-button').disabled = true;
+
+      setTimeout(function() {
+        document.getElementById('link-input-step').classList.remove('active');
+        document.getElementById('success-step').classList.add('active');
+      }, 1500);
+    }
+
+    function closeModal() {
+      document.getElementById('modal-overlay').classList.add('hidden');
+      document.getElementById('main-content').classList.remove('blurred');
+      
+      // Scroll to top smoothly
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
+
