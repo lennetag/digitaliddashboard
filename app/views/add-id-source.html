@@ -1,0 +1,144 @@
+{% extends "govuk-prototype-kit/layouts/govuk-branded.html" %}
+
+{% block pageTitle %}
+  Add an ID source – GOV.UK Digital ID
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "GOV.UK Digital ID",
+    serviceUrl: "/digital-id-home",
+    navigation: [
+      {
+        href: "/digital-id-home",
+        text: "Home"
+      },
+      {
+        href: "#",
+        text: "Settings"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+      <a href="/view-identity" class="govuk-back-link">Back to your identity</a>
+
+      <h1 class="govuk-heading-xl">
+        Add an ID source
+      </h1>
+
+      <p class="govuk-body-l">
+        Connect another official document or service to your Digital ID.
+      </p>
+
+      <form action="/view-identity" method="post" novalidate>
+        
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h2 class="govuk-fieldset__heading">
+                What type of ID do you want to add?
+              </h2>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="id-passport" name="id-type" type="radio" value="passport">
+                <label class="govuk-label govuk-radios__label" for="id-passport">
+                  UK Passport
+                </label>
+                <div class="govuk-hint govuk-radios__hint">
+                  Enables: Photo sharing, Nationality confirmation, Passport validity
+                </div>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="id-driving" name="id-type" type="radio" value="driving">
+                <label class="govuk-label govuk-radios__label" for="id-driving">
+                  Driving Licence
+                </label>
+                <div class="govuk-hint govuk-radios__hint">
+                  Enables: Licence history, Points check, Address verification, Licence categories
+                </div>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="id-immigration" name="id-type" type="radio" value="immigration">
+                <label class="govuk-label govuk-radios__label" for="id-immigration">
+                  Visas and Immigration
+                </label>
+                <div class="govuk-hint govuk-radios__hint">
+                  Enables: Immigration status, Right to Work, Right to Rent, Visa validity
+                </div>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="id-nhs" name="id-type" type="radio" value="nhs">
+                <label class="govuk-label govuk-radios__label" for="id-nhs">
+                  NHS Number
+                </label>
+                <div class="govuk-hint govuk-radios__hint">
+                  Enables: NHS employment verification, Healthcare professional status
+                </div>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="id-ni" name="id-type" type="radio" value="ni">
+                <label class="govuk-label govuk-radios__label" for="id-ni">
+                  National Insurance
+                </label>
+                <div class="govuk-hint govuk-radios__hint">
+                  Enables: Employment verification, Tax status, Benefit eligibility
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-visually-hidden">Warning</span>
+            You'll need to verify your identity and provide proof of this document. This process may take up to 5 minutes.
+          </strong>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+
+        <p class="govuk-body">
+          <a href="/view-identity" class="govuk-link">Cancel</a>
+        </p>
+      </form>
+
+      <details class="govuk-details govuk-!-margin-top-6" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Why connect additional ID sources?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p class="govuk-body">
+            Connecting additional ID sources to your Digital ID allows you to:
+          </p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Share more specific information when needed</li>
+            <li>Access services that require particular credentials</li>
+            <li>Reduce the need to repeatedly provide documents</li>
+            <li>Keep all your verified identity information in one secure place</li>
+          </ul>
+          <p class="govuk-body">
+            You remain in control of what information is shared and when. Data is only accessed from these sources when you explicitly authorize it.
+          </p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+{% endblock %}
+

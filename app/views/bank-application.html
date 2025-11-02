@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open a Bank Account - Premier Bank</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    .bank-header {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: white;
+      padding: 20px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .bank-header .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .bank-logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .bank-nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 30px;
+      font-size: 14px;
+    }
+
+    .hero {
+      background: white;
+      padding: 60px 20px;
+      text-align: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #1e3c72;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .application-form {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-section {
+      margin-bottom: 30px;
+    }
+
+    .form-section h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #1e3c72;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #1e3c72;
+      box-shadow: 0 0 0 3px rgba(30, 60, 114, 0.1);
+    }
+
+    .digital-id-option {
+      background: #f0f4f8;
+      border: 2px solid #1e3c72;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      text-align: center;
+    }
+
+    .digital-id-option h3 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: #1e3c72;
+    }
+
+    .digital-id-option p {
+      margin-bottom: 20px;
+      color: #666;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background: #1e3c72;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #2a5298;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(30, 60, 114, 0.3);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #1e3c72;
+      border: 2px solid #1e3c72;
+    }
+
+    .btn-secondary:hover {
+      background: #f0f4f8;
+    }
+
+    .divider {
+      text-align: center;
+      margin: 30px 0;
+      position: relative;
+    }
+
+    .divider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: #ddd;
+    }
+
+    .divider span {
+      background: white;
+      padding: 0 20px;
+      position: relative;
+      color: #999;
+      font-size: 14px;
+    }
+
+    /* Modal Styles */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-overlay.show {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      width: 90%;
+      max-width: 500px;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .modal-header {
+      padding: 20px;
+      border-bottom: 1px solid #e0e0e0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h3 {
+      margin: 0;
+      color: #0b0c0c;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #666;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+    }
+
+    .modal-close:hover {
+      color: #000;
+    }
+
+    .modal-body {
+      padding: 20px;
+    }
+
+    .modal-iframe-container {
+      min-height: 400px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .application-form {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="bank-header">
+    <div class="container">
+      <div class="bank-logo">🏦 Premier Bank</div>
+      <nav class="bank-nav">
+        <a href="#">Personal</a>
+        <a href="#">Business</a>
+        <a href="#">Help</a>
+        <a href="#">Sign in</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="hero">
+    <h1>Open Your Bank Account Today</h1>
+    <p>Join thousands of customers who trust Premier Bank with their finances</p>
+  </div>
+
+  <div class="container">
+    <div class="application-form">
+      
+      <div class="digital-id-option">
+        <h3>✓ Instant Verification with GOV.UK Digital ID</h3>
+        <p>Skip the paperwork! Use your GOV.UK Digital ID to verify your identity instantly and pre-fill your application.</p>
+        <button class="btn btn-primary" onclick="openDigitalIDModal()">
+          Use GOV.UK Digital ID
+        </button>
+      </div>
+
+      <div class="divider">
+        <span>or fill in the form manually</span>
+      </div>
+
+      <form id="bank-form">
+        <div class="form-section">
+          <h2>Personal Details</h2>
+          
+          <div class="form-group">
+            <label for="title">Title</label>
+            <select id="title" name="title" required>
+              <option value="">Select...</option>
+              <option value="Mr">Mr</option>
+              <option value="Mrs">Mrs</option>
+              <option value="Miss">Miss</option>
+              <option value="Ms">Ms</option>
+              <option value="Dr">Dr</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" name="first-name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" name="last-name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" required>
+          </div>
+
+          <div class="form-group">
+            <label for="nationality">Nationality</label>
+            <input type="text" id="nationality" name="nationality" required>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h2>Address</h2>
+          
+          <div class="form-group">
+            <label for="address1">Address Line 1</label>
+            <input type="text" id="address1" name="address1" required>
+          </div>
+
+          <div class="form-group">
+            <label for="address2">Address Line 2</label>
+            <input type="text" id="address2" name="address2">
+          </div>
+
+          <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" required>
+          </div>
+
+          <div class="form-group">
+            <label for="postcode">Postcode</label>
+            <input type="text" id="postcode" name="postcode" required>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%;">
+          Continue Application
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="digital-id-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>GOV.UK Digital ID</h3>
+        <button class="modal-close" onclick="closeDigitalIDModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-iframe-container" id="modal-content">
+          <!-- Content will be loaded here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentStep = 'email';
+
+    function openDigitalIDModal() {
+      document.getElementById('digital-id-modal').classList.add('show');
+      showEmailStep();
+    }
+
+    function closeDigitalIDModal() {
+      document.getElementById('digital-id-modal').classList.remove('show');
+      currentStep = 'email';
+    }
+
+    function showEmailStep() {
+      document.getElementById('modal-content').innerHTML = `
+        <h2 style="font-size: 24px; margin-bottom: 20px;">Enter your email address</h2>
+        <p style="margin-bottom: 20px;">We'll send you a code to confirm your email address.</p>
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; margin-bottom: 8px; font-weight: 600;">Email address</label>
+          <input type="email" id="modal-email" style="width: 100%; padding: 10px; border: 2px solid #0b0c0c; border-radius: 4px; font-size: 16px;">
+        </div>
+        <button onclick="showPasswordStep()" style="padding: 12px 24px; background: #00703c; color: white; border: none; border-radius: 4px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%;">Continue</button>
+      `;
+    }
+
+    function showPasswordStep() {
+      document.getElementById('modal-content').innerHTML = `
+        <h2 style="font-size: 24px; margin-bottom: 20px;">Enter your password</h2>
+        <p style="margin-bottom: 20px;">Enter your GOV.UK Digital ID password.</p>
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; margin-bottom: 8px; font-weight: 600;">Password</label>
+          <input type="password" id="modal-password" style="width: 100%; padding: 10px; border: 2px solid #0b0c0c; border-radius: 4px; font-size: 16px;">
+        </div>
+        <button onclick="show2FAStep()" style="padding: 12px 24px; background: #00703c; color: white; border: none; border-radius: 4px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-bottom: 10px;">Continue</button>
+        <button onclick="showEmailStep()" style="padding: 12px 24px; background: white; color: #0b0c0c; border: 2px solid #0b0c0c; border-radius: 4px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%;">Back</button>
+      `;
+    }
+
+    function show2FAStep() {
+      document.getElementById('modal-content').innerHTML = `
+        <h2 style="font-size: 24px; margin-bottom: 20px;">Enter your security code</h2>
+        <p style="margin-bottom: 20px;">We've sent a 6-digit security code to your phone ending in 7890.</p>
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; margin-bottom: 8px; font-weight: 600;">Security code</label>
+          <input type="text" id="modal-2fa" style="width: 100%; padding: 10px; border: 2px solid #0b0c0c; border-radius: 4px; font-size: 16px;" maxlength="6">
+        </div>
+        <button onclick="showDataShareStep()" style="padding: 12px 24px; background: #00703c; color: white; border: none; border-radius: 4px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-bottom: 10px;">Continue</button>
+        <button onclick="showPasswordStep()" style="padding: 12px 24px; background: white; color: #0b0c0c; border: 2px solid #0b0c0c; border-radius: 4px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%;">Back</button>
+      `;
+
+      // Auto-fill 2FA after 2 seconds
+      setTimeout(() => {
+        const input = document.getElementById('modal-2fa');
+        if (input) {
+          input.value = '123456';
+        }
+      }, 2000);
+    }
+
+    function showDataShareStep() {
+      document.getElementById('modal-content').innerHTML = `
+        <h2 style="font-size: 24px; margin-bottom: 20px;">Share your information</h2>
+        <p style="margin-bottom: 20px;">Premier Bank is requesting access to the following information from your Digital ID:</p>
+        
+        <div style="background: #f3f2f1; padding: 15px; border-left: 4px solid #1d70b8; margin-bottom: 20px;">
+          <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 10px;">Identity Verification</h3>
+          <ul style="margin: 0; padding-left: 20px;">
+            <li>Full name</li>
+            <li>Date of birth</li>
+            <li>Nationality</li>
+          </ul>
+        </div>
+
+        <div style="background: #f3f2f1; padding: 15px; border-left: 4px solid #1d70b8; margin-bottom: 20px;">
+          <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 10px;">Address Confirmation</h3>
+          <ul style="margin: 0; padding-left: 20px;">
+            <li>Current address</li>
+          </ul>
+        </div>
+
+        <div style="background: #ffe5cc; padding: 15px; margin-bottom: 20px; border-left: 4px solid #f47738;">
+          <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 10px;">Privacy & Security</h3>
+          <ul style="margin: 0; padding-left: 20px; list-style: none;">
+            <li style="margin-bottom: 8px;">✓ Your Digital ID is protected and is never shared</li>
+            <li style="margin-bottom: 8px;">✗ No other information will be shared (like immigration status or driving licence)</li>
+            <li>✓ You can revoke this access at any time from your Digital ID settings</li>
+          </ul>
+        </div>
+
+        <button onclick="confirmDataShare()" style="padding: 12px 24px; background: #00703c; color: white; border: none; border-radius: 4px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-bottom: 10px;">Confirm and share</button>
+        <button onclick="closeDigitalIDModal()" style="padding: 12px 24px; background: white; color: #0b0c0c; border: 2px solid #0b0c0c; border-radius: 4px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%;">Cancel</button>
+      `;
+    }
+
+    function confirmDataShare() {
+      // Close modal
+      closeDigitalIDModal();
+      
+      // Auto-fill form with data from Digital ID
+      document.getElementById('title').value = 'Ms';
+      document.getElementById('first-name').value = 'Sarah';
+      document.getElementById('last-name').value = 'Johnson';
+      document.getElementById('dob').value = '1998-03-12';
+      document.getElementById('nationality').value = 'British';
+      document.getElementById('address1').value = '42 Acacia Avenue';
+      document.getElementById('address2').value = 'Flat 3B';
+      document.getElementById('city').value = 'London';
+      document.getElementById('postcode').value = 'SW1A 1AA';
+
+      // Show success message
+      const form = document.querySelector('.application-form');
+      const successDiv = document.createElement('div');
+      successDiv.style.cssText = 'background: #d4f4dd; border: 2px solid #00703c; border-radius: 8px; padding: 20px; margin-bottom: 20px; text-align: center;';
+      successDiv.innerHTML = `
+        <h3 style="color: #00703c; margin-bottom: 10px;">✓ Information verified successfully</h3>
+        <p style="margin: 0; color: #0b0c0c;">Your form has been pre-filled with your verified Digital ID information. Please review and continue.</p>
+      `;
+      form.insertBefore(successDiv, form.firstChild);
+
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Remove success message after 5 seconds
+      setTimeout(() => {
+        successDiv.remove();
+      }, 5000);
+    }
+  </script>
+
+</body>
+</html>
+

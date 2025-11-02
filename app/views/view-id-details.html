@@ -1,0 +1,363 @@
+{% extends "govuk-prototype-kit/layouts/govuk-branded.html" %}
+
+{% block pageTitle %}
+  ID source details – GOV.UK Digital ID
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "GOV.UK Digital ID",
+    serviceUrl: "/digital-id-home",
+    navigation: [
+      {
+        href: "/digital-id-home",
+        text: "Home"
+      },
+      {
+        href: "#",
+        text: "Settings"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+      <a href="/view-identity" class="govuk-back-link">Back to your identity</a>
+
+      <h1 class="govuk-heading-xl" id="source-title">
+        UK Passport
+      </h1>
+
+      <p class="govuk-body-l" id="source-description">
+        Your UK Passport information connected to your Digital ID.
+      </p>
+
+      <div id="passport-content" style="display: none;">
+        <h2 class="govuk-heading-m">Available information</h2>
+        
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Connection status
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <strong class="govuk-tag govuk-tag--green">Active</strong>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Passport number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              502134567812
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Passport photo
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Available for identity verification
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Passport status
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Valid
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Expiry date
+            </dt>
+            <dd class="govuk-summary-list__value">
+              18 September 2033
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Nationality
+            </dt>
+            <dd class="govuk-summary-list__value">
+              British
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Connected since
+            </dt>
+            <dd class="govuk-summary-list__value">
+              15 January 2024
+            </dd>
+          </div>
+        </dl>
+
+        <h3 class="govuk-heading-s govuk-!-margin-top-6">What this enables</h3>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Share passport photo for identity verification</li>
+          <li>Prove nationality</li>
+          <li>Confirm passport validity</li>
+        </ul>
+      </div>
+
+      <div id="driving-content" style="display: none;">
+        <h2 class="govuk-heading-m">Available information</h2>
+        
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Connection status
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <strong class="govuk-tag govuk-tag--green">Active</strong>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Licence number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              JOHNS809124SM9IJ
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Licence history
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Available – includes all past and current licences
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Points on licence
+            </dt>
+            <dd class="govuk-summary-list__value">
+              0 points
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Registered address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Available for address verification
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Licence categories
+            </dt>
+            <dd class="govuk-summary-list__value">
+              A, B (Car and motorcycle)
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Connected since
+            </dt>
+            <dd class="govuk-summary-list__value">
+              23 March 2024
+            </dd>
+          </div>
+        </dl>
+
+        <h3 class="govuk-heading-s govuk-!-margin-top-6">What this enables</h3>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Verify driving eligibility</li>
+          <li>Share registered address</li>
+          <li>Prove clean driving record</li>
+          <li>Confirm licence categories</li>
+        </ul>
+      </div>
+
+      <div id="immigration-content" style="display: none;">
+        <h2 class="govuk-heading-m">Available information</h2>
+        
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Connection status
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <strong class="govuk-tag govuk-tag--green">Active</strong>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Immigration status
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Available – current status can be verified
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Immigration route
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Available – route/visa type can be shared
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Visa validity
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Available – expiry dates can be verified
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Right to Work
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Available – employment rights can be confirmed
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Right to Rent
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Available – rental rights can be confirmed
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Connected since
+            </dt>
+            <dd class="govuk-summary-list__value">
+              8 June 2024
+            </dd>
+          </div>
+        </dl>
+
+        <h3 class="govuk-heading-s govuk-!-margin-top-6">What this enables</h3>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Prove Right to Work to employers</li>
+          <li>Prove Right to Rent to landlords</li>
+          <li>Confirm immigration status</li>
+          <li>Share visa validity information</li>
+        </ul>
+      </div>
+
+      <div id="onelogin-content" style="display: none;">
+        <h2 class="govuk-heading-m">Available information</h2>
+        
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Connection status
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <strong class="govuk-tag govuk-tag--green">Active</strong>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Core identity
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Name, date of birth, and address verified through GOV.UK One Login
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Email address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              sarah.johnson@example.com
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Phone number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              +44 7700 900*** (verified)
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Connected since
+            </dt>
+            <dd class="govuk-summary-list__value">
+              15 January 2024
+            </dd>
+          </div>
+        </dl>
+
+        <div class="govuk-inset-text">
+          GOV.UK One Login cannot be removed as it is the foundation of your Digital ID. If you delete your One Login account, your Digital ID will also be deleted.
+        </div>
+
+        <h3 class="govuk-heading-s govuk-!-margin-top-6">What this enables</h3>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Access all government services</li>
+          <li>Core identity verification</li>
+          <li>Secure authentication</li>
+        </ul>
+      </div>
+
+      <div class="govuk-button-group govuk-!-margin-top-6">
+        <a href="/view-identity" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+          Back to your identity
+        </a>
+        <a href="#" class="govuk-link govuk-link--destructive" id="remove-link">
+          Remove this ID source
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // Get source from URL parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const source = urlParams.get('source') || 'passport';
+      
+      // Hide all content sections
+      document.getElementById('passport-content').style.display = 'none';
+      document.getElementById('driving-content').style.display = 'none';
+      document.getElementById('immigration-content').style.display = 'none';
+      document.getElementById('onelogin-content').style.display = 'none';
+      
+      // Set title and show appropriate content
+      const titleEl = document.getElementById('source-title');
+      const descEl = document.getElementById('source-description');
+      const removeLink = document.getElementById('remove-link');
+      
+      if (source === 'passport') {
+        titleEl.textContent = 'UK Passport';
+        descEl.textContent = 'Your UK Passport information connected to your Digital ID.';
+        document.getElementById('passport-content').style.display = 'block';
+      } else if (source === 'driving') {
+        titleEl.textContent = 'Driving Licence';
+        descEl.textContent = 'Your UK Driving Licence information connected to your Digital ID.';
+        document.getElementById('driving-content').style.display = 'block';
+      } else if (source === 'immigration') {
+        titleEl.textContent = 'Visas and Immigration';
+        descEl.textContent = 'Your UK Visas and Immigration information connected to your Digital ID.';
+        document.getElementById('immigration-content').style.display = 'block';
+      } else if (source === 'onelogin') {
+        titleEl.textContent = 'GOV.UK One Login';
+        descEl.textContent = 'Your GOV.UK One Login account that powers your Digital ID.';
+        document.getElementById('onelogin-content').style.display = 'block';
+        removeLink.style.display = 'none'; // Can't remove One Login
+      }
+    })();
+  </script>
+{% endblock %}
+

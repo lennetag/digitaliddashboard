@@ -1,0 +1,291 @@
+{% extends "govuk-prototype-kit/layouts/govuk-branded.html" %}
+
+{% block pageTitle %}
+  Your identity and connected services – GOV.UK Digital ID
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "GOV.UK Digital ID",
+    serviceUrl: "/digital-id-home",
+    navigation: [
+      {
+        href: "/digital-id-home",
+        text: "Home"
+      },
+      {
+        href: "#",
+        text: "Settings"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+      <h1 class="govuk-heading-xl">
+        Your identity and connected services
+      </h1>
+
+      <p class="govuk-body-l">
+        View and manage your connected ID sources and personal information.
+      </p>
+
+      <div class="govuk-inset-text">
+        All information displayed is securely accessed from official government systems. Your Digital ID only stores basic biographical information – all other data is retrieved in real-time when needed.
+      </div>
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-6">Basic information</h2>
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Full name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Sarah Elizabeth Johnson
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+            12 March 1998
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Nationality
+          </dt>
+          <dd class="govuk-summary-list__value">
+            British
+          </dd>
+        </div>
+      </dl>
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-8">Connected ID sources</h2>
+      
+      <p class="govuk-body">
+        These are the official identity documents and services connected to your Digital ID.
+      </p>
+
+      <!-- GOV.UK One Login -->
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h3 class="govuk-summary-card__title">GOV.UK One Login</h3>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="/view-id-details?source=onelogin">
+                View details
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Status
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <strong class="govuk-tag govuk-tag--blue">Automatically connected</strong>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Available data
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Core identity, Email address, Phone number
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Connected since
+              </dt>
+              <dd class="govuk-summary-list__value">
+                15 January 2024
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <!-- Passport -->
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h3 class="govuk-summary-card__title">UK Passport</h3>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="/view-id-details?source=passport">
+                View details
+              </a>
+            </li>
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="#">
+                Remove
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Status
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <strong class="govuk-tag govuk-tag--blue">Automatically connected</strong>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Available data
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Photo, Passport status, Expiry date, Nationality
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Passport number
+              </dt>
+              <dd class="govuk-summary-list__value">
+                502*** ****812
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Connected since
+              </dt>
+              <dd class="govuk-summary-list__value">
+                15 January 2024
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <!-- Driving Licence -->
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h3 class="govuk-summary-card__title">Driving Licence</h3>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="/view-id-details?source=driving">
+                View details
+              </a>
+            </li>
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="#">
+                Remove
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Status
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <strong class="govuk-tag govuk-tag--grey">Manually added</strong>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Available data
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Licence history, Points on licence, Registered address, Licence categories
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Licence number
+              </dt>
+              <dd class="govuk-summary-list__value">
+                JOHNS******4SM9IJ
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Connected since
+              </dt>
+              <dd class="govuk-summary-list__value">
+                23 March 2024
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <!-- Visas & Immigration -->
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h3 class="govuk-summary-card__title">Visas and Immigration</h3>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="/view-id-details?source=immigration">
+                View details
+              </a>
+            </li>
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="#">
+                Remove
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Status
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <strong class="govuk-tag govuk-tag--grey">Manually added</strong>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Available data
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Immigration status, Immigration route, Visa validity, Right to Work, Right to Rent
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Connected since
+              </dt>
+              <dd class="govuk-summary-list__value">
+                8 June 2024
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="govuk-button-group govuk-!-margin-top-6">
+        <a href="/add-id-source" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
+          Add another ID source
+        </a>
+        <a href="/digital-id-home" class="govuk-link">
+          Return to home
+        </a>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}
+
