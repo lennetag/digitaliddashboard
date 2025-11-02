@@ -1,0 +1,170 @@
+{% extends "govuk-prototype-kit/layouts/govuk-branded.html" %}
+
+{% block pageTitle %}
+  What information do you want to share when checked? – GOV.UK Digital ID
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "GOV.UK Digital ID",
+    serviceUrl: "/digital-id-home",
+    navigation: [
+      {
+        href: "/digital-id-home",
+        text: "Home"
+      },
+      {
+        href: "#",
+        text: "Settings"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+      <!-- Summary of previous answers -->
+      <dl class="govuk-summary-list govuk-!-margin-bottom-6">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of check
+          </dt>
+          <dd class="govuk-summary-list__value" id="check-type-summary">
+            <!-- Will be populated by JavaScript -->
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/create-temp-code">
+              Change<span class="govuk-visually-hidden"> type of check</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Record this check
+          </dt>
+          <dd class="govuk-summary-list__value" id="record-check-summary">
+            <!-- Will be populated by JavaScript -->
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/temp-code-record">
+              Change<span class="govuk-visually-hidden"> recording preference</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-visually-hidden">Warning</span>
+          This code will expire after 1 hour or after one use
+        </strong>
+      </div>
+
+      <form action="/temp-code-success" method="post" novalidate>
+        
+        <!-- Hidden fields to pass data forward -->
+        <input type="hidden" name="check-type" id="check-type-hidden">
+        <input type="hidden" name="record-check" id="record-check-hidden">
+
+        <!-- Data to Return -->
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                What information do you want to share when checked?
+              </h1>
+            </legend>
+            <div class="govuk-hint">
+              Choose how much information will be shared with the verifier
+            </div>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="data-none" name="data-return" type="radio" value="none">
+                <label class="govuk-label govuk-radios__label" for="data-none">
+                  None (verification only)
+                </label>
+                <div class="govuk-hint govuk-radios__hint">
+                  Confirms identity without sharing any personal details
+                </div>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="data-photo" name="data-return" type="radio" value="photo">
+                <label class="govuk-label govuk-radios__label" for="data-photo">
+                  Photo only
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="data-photo-name" name="data-return" type="radio" value="photo-name" checked>
+                <label class="govuk-label govuk-radios__label" for="data-photo-name">
+                  Photo and full name
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="data-full" name="data-return" type="radio" value="full">
+                <label class="govuk-label govuk-radios__label" for="data-full">
+                  Photo, full name, date of birth and nationality
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">
+          Create temporary code
+        </button>
+
+        <p class="govuk-body">
+          <a href="/temp-code-record" class="govuk-link">Back</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Get data from URL or sessionStorage
+    (function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const form = document.querySelector('form');
+      
+      let checkType = urlParams.get('check-type') || sessionStorage.getItem('checkType') || 'Right-to-Work';
+      let recordCheck = urlParams.get('record-check') || sessionStorage.getItem('recordCheck') || 'yes';
+      
+      // Store in sessionStorage
+      sessionStorage.setItem('checkType', checkType);
+      sessionStorage.setItem('recordCheck', recordCheck);
+      
+      // Display in summary
+      document.getElementById('check-type-summary').textContent = checkType;
+      document.getElementById('record-check-summary').textContent = recordCheck === 'yes' ? 'Yes' : 'No';
+      
+      // Set hidden field values
+      document.getElementById('check-type-hidden').value = checkType;
+      document.getElementById('record-check-hidden').value = recordCheck;
+      
+      // Handle form submission
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const dataReturn = document.querySelector('input[name="data-return"]:checked').value;
+          
+          // Store in sessionStorage
+          sessionStorage.setItem('dataReturn', dataReturn);
+          
+          // Navigate to duration page with all parameters
+          window.location.href = '/temp-code-duration?check-type=' + encodeURIComponent(checkType) + 
+                                  '&record-check=' + encodeURIComponent(recordCheck) +
+                                  '&data-return=' + encodeURIComponent(dataReturn);
+        });
+      }
+    })();
+  </script>
+{% endblock %}
+

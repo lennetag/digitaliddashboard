@@ -1,0 +1,228 @@
+{% extends "govuk-prototype-kit/layouts/govuk-branded.html" %}
+
+{% block pageTitle %}
+  How long should the code last? – GOV.UK Digital ID
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "GOV.UK Digital ID",
+    serviceUrl: "/digital-id-home",
+    navigation: [
+      {
+        href: "/digital-id-home",
+        text: "Home"
+      },
+      {
+        href: "#",
+        text: "Settings"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+      <!-- Summary of previous answers -->
+      <dl class="govuk-summary-list govuk-!-margin-bottom-6">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of check
+          </dt>
+          <dd class="govuk-summary-list__value" id="check-type-summary">
+            <!-- Will be populated by JavaScript -->
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/create-temp-code">
+              Change<span class="govuk-visually-hidden"> type of check</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Record this check
+          </dt>
+          <dd class="govuk-summary-list__value" id="record-check-summary">
+            <!-- Will be populated by JavaScript -->
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/temp-code-record">
+              Change<span class="govuk-visually-hidden"> recording preference</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Data to return
+          </dt>
+          <dd class="govuk-summary-list__value" id="data-return-summary">
+            <!-- Will be populated by JavaScript -->
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/temp-code-data">
+              Change<span class="govuk-visually-hidden"> data to return</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <!-- Warning for restricted durations -->
+      <div class="govuk-warning-text" id="duration-warning" style="display: none;">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-visually-hidden">Warning</span>
+          Codes that share no data can only last up to 1 hour
+        </strong>
+      </div>
+
+      <form action="/temp-code-success" method="post" novalidate>
+        
+        <!-- Hidden fields to pass data forward -->
+        <input type="hidden" name="check-type" id="check-type-hidden">
+        <input type="hidden" name="record-check" id="record-check-hidden">
+        <input type="hidden" name="data-return" id="data-return-hidden">
+
+        <!-- Duration Selection -->
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                How long should the code last?
+              </h1>
+            </legend>
+            <div class="govuk-hint">
+              Choose how long the temporary code will remain valid
+            </div>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="duration-1hour" name="duration" type="radio" value="1hour" checked>
+                <label class="govuk-label govuk-radios__label" for="duration-1hour">
+                  1 hour
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="duration-1day" name="duration" type="radio" value="1day">
+                <label class="govuk-label govuk-radios__label" for="duration-1day">
+                  1 day
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="duration-3days" name="duration" type="radio" value="3days">
+                <label class="govuk-label govuk-radios__label" for="duration-3days">
+                  3 days
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="duration-7days" name="duration" type="radio" value="7days">
+                <label class="govuk-label govuk-radios__label" for="duration-7days">
+                  7 days
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="duration-30days" name="duration" type="radio" value="30days">
+                <label class="govuk-label govuk-radios__label" for="duration-30days">
+                  30 days
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">
+          Create temporary code
+        </button>
+
+        <p class="govuk-body">
+          <a href="/temp-code-data" class="govuk-link">Back</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Get data from URL or sessionStorage
+    (function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const form = document.querySelector('form');
+      
+      let checkType = urlParams.get('check-type') || sessionStorage.getItem('checkType') || 'Right-to-Work';
+      let recordCheck = urlParams.get('record-check') || sessionStorage.getItem('recordCheck') || 'yes';
+      let dataReturn = urlParams.get('data-return') || sessionStorage.getItem('dataReturn') || 'photo-name';
+      
+      // Store in sessionStorage
+      sessionStorage.setItem('checkType', checkType);
+      sessionStorage.setItem('recordCheck', recordCheck);
+      sessionStorage.setItem('dataReturn', dataReturn);
+      
+      // Display in summary
+      document.getElementById('check-type-summary').textContent = checkType;
+      document.getElementById('record-check-summary').textContent = recordCheck === 'yes' ? 'Yes' : 'No';
+      
+      const dataReturnText = {
+        'none': 'None (verification only)',
+        'photo': 'Photo only',
+        'photo-name': 'Photo and full name',
+        'full': 'Photo, full name, date of birth and nationality'
+      };
+      document.getElementById('data-return-summary').textContent = dataReturnText[dataReturn] || dataReturnText['photo-name'];
+      
+      // Set hidden field values
+      document.getElementById('check-type-hidden').value = checkType;
+      document.getElementById('record-check-hidden').value = recordCheck;
+      document.getElementById('data-return-hidden').value = dataReturn;
+      
+      // If "none" selected, disable longer duration options and show warning
+      if (dataReturn === 'none') {
+        document.getElementById('duration-warning').style.display = 'block';
+        
+        // Disable options longer than 1 hour - only 1 hour is allowed for "none"
+        const longDurationOptions = ['duration-1day', 'duration-3days', 'duration-7days', 'duration-30days'];
+        longDurationOptions.forEach(function(id) {
+          const input = document.getElementById(id);
+          const label = document.querySelector('label[for="' + id + '"]');
+          
+          if (input) {
+            input.disabled = true;
+            input.setAttribute('aria-disabled', 'true');
+          }
+          
+          if (label) {
+            label.style.opacity = '0.5';
+            label.style.cursor = 'not-allowed';
+          }
+        });
+        
+        // If a disabled option is checked, default to 1 hour
+        const checkedInput = document.querySelector('input[name="duration"]:checked');
+        if (checkedInput && checkedInput.disabled) {
+          document.getElementById('duration-1hour').checked = true;
+        }
+      }
+      
+      // Handle form submission
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const duration = document.querySelector('input[name="duration"]:checked').value;
+          
+          // Store in sessionStorage
+          sessionStorage.setItem('duration', duration);
+          
+          // Navigate to success page with all parameters
+          window.location.href = '/temp-code-success?check-type=' + encodeURIComponent(checkType) + 
+                                  '&record-check=' + encodeURIComponent(recordCheck) +
+                                  '&data-return=' + encodeURIComponent(dataReturn) +
+                                  '&duration=' + encodeURIComponent(duration);
+        });
+      }
+    })();
+  </script>
+{% endblock %}
+

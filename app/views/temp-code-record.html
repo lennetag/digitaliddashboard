@@ -1,0 +1,127 @@
+{% extends "govuk-prototype-kit/layouts/govuk-branded.html" %}
+
+{% block pageTitle %}
+  Should this check be recorded? – GOV.UK Digital ID
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "GOV.UK Digital ID",
+    serviceUrl: "/digital-id-home",
+    navigation: [
+      {
+        href: "/digital-id-home",
+        text: "Home"
+      },
+      {
+        href: "#",
+        text: "Settings"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+      <!-- Summary of previous answer -->
+      <dl class="govuk-summary-list govuk-!-margin-bottom-6">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of check
+          </dt>
+          <dd class="govuk-summary-list__value" id="check-type-summary">
+            <!-- Will be populated by JavaScript -->
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/create-temp-code">
+              Change<span class="govuk-visually-hidden"> type of check</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <form action="/temp-code-data" method="post" novalidate>
+        
+        <!-- Hidden field to pass check type forward -->
+        <input type="hidden" name="check-type" id="check-type-hidden">
+
+        <!-- Record Check -->
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Should this check be recorded?
+              </h1>
+            </legend>
+            <div class="govuk-hint">
+              Recording the check helps you track who has verified your identity
+            </div>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="record-yes" name="record-check" type="radio" value="yes" checked>
+                <label class="govuk-label govuk-radios__label" for="record-yes">
+                  Yes, record this check
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="record-no" name="record-check" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="record-no">
+                  No, do not record this check
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+
+        <p class="govuk-body">
+          <a href="/create-temp-code" class="govuk-link">Back</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Get check type from URL or sessionStorage
+    (function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const form = document.querySelector('form');
+      let checkType = urlParams.get('check-type') || sessionStorage.getItem('checkType') || 'Right-to-Work';
+      
+      // Store in sessionStorage for next page
+      sessionStorage.setItem('checkType', checkType);
+      
+      // Display in summary
+      document.getElementById('check-type-summary').textContent = checkType;
+      
+      // Set hidden field value
+      document.getElementById('check-type-hidden').value = checkType;
+      
+      // Handle form submission
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const recordCheck = document.querySelector('input[name="record-check"]:checked').value;
+          
+          // Store in sessionStorage
+          sessionStorage.setItem('recordCheck', recordCheck);
+          
+          // Navigate to next page with query parameters
+          window.location.href = '/temp-code-data?check-type=' + encodeURIComponent(checkType) + 
+                                  '&record-check=' + encodeURIComponent(recordCheck);
+        });
+      }
+    })();
+  </script>
+{% endblock %}
+

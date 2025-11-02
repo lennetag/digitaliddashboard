@@ -1,13 +1,13 @@
 {% extends "govuk-prototype-kit/layouts/govuk-branded.html" %}
 
 {% block pageTitle %}
-  Create temporary identity code – GOV.UK One Login
+  Create temporary identity code – GOV.UK Digital ID
 {% endblock %}
 
 {% block header %}
   {{ govukHeader({
     homepageUrl: "/",
-    serviceName: "GOV.UK One Login",
+    serviceName: "GOV.UK Digital ID",
     serviceUrl: "/digital-id-home",
     navigation: [
       {
@@ -30,23 +30,20 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">
-        Create temporary identity code
+        What type of check is this for?
       </h1>
 
       <p class="govuk-body">
-        Generate a secure, temporary code that allows a third party to verify your identity without sharing your personal details permanently.
+        Start typing to see suggestions from the list of available check types.
       </p>
 
-      <form action="/temp-code-success" method="post" novalidate>
+      <form action="/temp-code-record" method="post" novalidate>
         
         <!-- Check Type with Autocomplete -->
         <div class="govuk-form-group">
-          <label class="govuk-label govuk-label--m" for="check-type">
-            What type of check is this for?
+          <label class="govuk-label" for="check-type">
+            Type of check
           </label>
-          <div class="govuk-hint">
-            Start typing to see suggestions
-          </div>
           <input class="govuk-input govuk-input--width-30" id="check-type" name="check-type" type="text" autocomplete="off">
           
           <!-- Hidden select for data -->
@@ -86,83 +83,8 @@
           </datalist>
         </div>
 
-        <!-- Record Check -->
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              Should this check be recorded?
-            </legend>
-            <div class="govuk-hint">
-              Recording the check helps you track who has verified your identity
-            </div>
-            <div class="govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="record-yes" name="record-check" type="radio" value="yes" checked>
-                <label class="govuk-label govuk-radios__label" for="record-yes">
-                  Yes, record this check
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="record-no" name="record-check" type="radio" value="no">
-                <label class="govuk-label govuk-radios__label" for="record-no">
-                  No, do not record this check
-                </label>
-              </div>
-            </div>
-          </fieldset>
-        </div>
-
-        <!-- Data to Return -->
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              What data should be returned?
-            </legend>
-            <div class="govuk-hint">
-              Choose how much information the third party will receive
-            </div>
-            <div class="govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="data-none" name="data-return" type="radio" value="none">
-                <label class="govuk-label govuk-radios__label" for="data-none">
-                  None (verification only)
-                </label>
-                <div class="govuk-hint govuk-radios__hint">
-                  Confirms identity without sharing any personal details
-                </div>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="data-photo" name="data-return" type="radio" value="photo">
-                <label class="govuk-label govuk-radios__label" for="data-photo">
-                  Photo only
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="data-photo-name" name="data-return" type="radio" value="photo-name" checked>
-                <label class="govuk-label govuk-radios__label" for="data-photo-name">
-                  Photo and full name
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="data-full" name="data-return" type="radio" value="full">
-                <label class="govuk-label govuk-radios__label" for="data-full">
-                  Photo, full name, date of birth and nationality
-                </label>
-              </div>
-            </div>
-          </fieldset>
-        </div>
-
-        <div class="govuk-warning-text">
-          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-          <strong class="govuk-warning-text__text">
-            <span class="govuk-visually-hidden">Warning</span>
-            This code will expire after 1 hour or after one use
-          </strong>
-        </div>
-
         <button class="govuk-button" data-module="govuk-button">
-          Create temporary code
+          Continue
         </button>
 
         <p class="govuk-body">
@@ -177,9 +99,16 @@
     (function() {
       var input = document.getElementById('check-type');
       var datalist = document.getElementById('check-types');
+      var form = document.querySelector('form');
       
       if (input && datalist) {
         input.setAttribute('list', 'check-types');
+        
+        // Load previous value if exists
+        var savedCheckType = sessionStorage.getItem('checkType');
+        if (savedCheckType) {
+          input.value = savedCheckType;
+        }
         
         // Add some visual feedback
         input.addEventListener('input', function() {
@@ -190,6 +119,17 @@
             this.style.borderColor = '';
             this.style.borderWidth = '';
           }
+        });
+      }
+      
+      // Store value in sessionStorage on form submit
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var checkType = input.value || 'Right-to-Work';
+          sessionStorage.setItem('checkType', checkType);
+          // Navigate to next page with query parameter
+          window.location.href = '/temp-code-record?check-type=' + encodeURIComponent(checkType);
         });
       }
     })();

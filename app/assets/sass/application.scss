@@ -309,3 +309,120 @@
   }
 }
 
+// QR code container - desktop view
+.qr-code-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+}
+
+// Privacy list styling
+#privacy-list {
+  li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+}
+
+// Mobile responsive styles for login and temp code pages
+@media (max-width: 640px) {
+  // Stack all grid columns on mobile
+  .govuk-grid-row .govuk-grid-column-one-third,
+  .govuk-grid-row .govuk-grid-column-two-thirds,
+  .govuk-grid-row .govuk-grid-column-one-half,
+  .govuk-grid-row .govuk-grid-column-one-quarter {
+    width: 100%;
+    float: none;
+  }
+
+  // Ensure temp code success page stacks properly
+  .qr-code-container {
+    margin-top: govuk-spacing(4);
+    min-height: auto;
+    text-align: center;
+    
+    #qrcode {
+      display: inline-block;
+      max-width: 100%;
+      
+      canvas, img {
+        max-width: 100%;
+        height: auto !important;
+        display: block;
+      }
+    }
+  }
+  
+  // Ensure grid columns have proper padding on mobile
+  .govuk-grid-row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  // Make summary cards full width on mobile
+  .govuk-summary-card {
+    margin-bottom: govuk-spacing(4);
+  }
+
+  // Adjust input widths for mobile
+  .govuk-input--width-20,
+  .govuk-input--width-30 {
+    max-width: 100%;
+  }
+
+  // Make buttons full width on mobile for better tap targets
+  .govuk-button {
+    width: 100%;
+    margin-bottom: govuk-spacing(2);
+  }
+
+  .govuk-button-group {
+    display: block;
+    
+    .govuk-button {
+      margin-right: 0;
+      margin-bottom: govuk-spacing(3);
+    }
+  }
+
+  // Adjust temp code display for mobile
+  #temp-code {
+    font-size: 16px !important;
+    word-break: break-all;
+  }
+
+  // Stack radio buttons vertically with more spacing on mobile
+  .govuk-radios__item {
+    margin-bottom: govuk-spacing(3);
+  }
+
+  // Ensure navigation doesn't overflow on mobile
+  .govuk-header__navigation {
+    font-size: 14px;
+  }
+
+  // Make panel titles more readable on mobile
+  .govuk-panel__title {
+    font-size: 32px;
+  }
+
+  // Make tables scrollable on mobile
+  .govuk-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  // Improve summary list readability on mobile
+  .govuk-summary-list__key,
+  .govuk-summary-list__value {
+    word-break: break-word;
+  }
+
+  // Adjust details component on mobile
+  .govuk-details__summary {
+    font-size: 16px;
+  }
+}
+
