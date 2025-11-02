@@ -356,6 +356,11 @@
           <div class="value" id="check-type">Over 18</div>
         </div>
 
+        <div class="check-info">
+          <h3>Data Sharing Option Selected</h3>
+          <div class="value" id="data-sharing-option">None (verification only)</div>
+        </div>
+
         <div class="photo-container" id="photo-container" style="display: none;">
           <h3>Identity Photo</h3>
           <img id="identity-photo" src="" alt="Identity Photo">
@@ -527,6 +532,15 @@
       document.getElementById('name-container').style.display = 'none';
       document.getElementById('dob-container').style.display = 'none';
       document.getElementById('nationality-container').style.display = 'none';
+      
+      // Set data sharing option text
+      const dataSharingOptions = [
+        'None (verification only)',
+        'Photo only',
+        'Photo and full name',
+        'Photo, full name, date of birth and nationality'
+      ];
+      document.getElementById('data-sharing-option').textContent = dataSharingOptions[dataOption];
       
       // Show fields based on data option
       // 0 = none, 1 = photo, 2 = photo+name, 3 = full details
