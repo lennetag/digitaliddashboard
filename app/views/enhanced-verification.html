@@ -1,0 +1,366 @@
+{% extends "govuk-prototype-kit/layouts/govuk-branded.html" %}
+
+{% block pageTitle %}
+  Enhanced verification – GOV.UK Digital ID
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "GOV.UK Digital ID",
+    serviceUrl: "/digital-id-home",
+    navigation: [
+      {
+        href: "/digital-id-home",
+        text: "Home"
+      },
+      {
+        href: "#",
+        text: "Settings"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+      <!-- Summary of previous answers -->
+      <dl class="govuk-summary-list govuk-!-margin-bottom-6">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of check
+          </dt>
+          <dd class="govuk-summary-list__value" id="check-type-summary">
+            <!-- Will be populated by JavaScript -->
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/create-temp-code">
+              Change<span class="govuk-visually-hidden"> type of check</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Record this check
+          </dt>
+          <dd class="govuk-summary-list__value" id="record-check-summary">
+            <!-- Will be populated by JavaScript -->
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/temp-code-record">
+              Change<span class="govuk-visually-hidden"> recording preference</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Data to return
+          </dt>
+          <dd class="govuk-summary-list__value" id="data-return-summary">
+            <!-- Will be populated by JavaScript -->
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk:link" href="/temp-code-data">
+              Change<span class="govuk-visually-hidden"> data to return</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Code duration
+          </dt>
+          <dd class="govuk-summary-list__value" id="duration-summary">
+            <!-- Will be populated by JavaScript -->
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/temp-code-duration">
+              Change<span class="govuk-visually-hidden"> code duration</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <form action="/temp-code-success" method="post" novalidate>
+        
+        <!-- Hidden fields to pass data forward -->
+        <input type="hidden" name="check-type" id="check-type-hidden">
+        <input type="hidden" name="record-check" id="record-check-hidden">
+        <input type="hidden" name="data-return" id="data-return-hidden">
+        <input type="hidden" name="duration" id="duration-hidden">
+        <input type="hidden" name="enhanced" id="enhanced-hidden" value="no">
+
+        <!-- Enhanced Verification -->
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Do you want to add enhanced verification?
+              </h1>
+            </legend>
+            <div class="govuk-hint">
+              Enhanced verification adds an extra layer of security by taking a photo of you in the moment. This helps prove you're actually making this request.
+            </div>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="enhanced-yes" name="enhanced" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="enhanced-yes">
+                  Yes, add enhanced verification
+                </label>
+                <div class="govuk-hint govuk-radios__hint">
+                  You'll need to take a photo using your device camera
+                </div>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="enhanced-no" name="enhanced" type="radio" value="no" checked>
+                <label class="govuk-label govuk-radios__label" for="enhanced-no">
+                  No, continue without enhanced verification
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- Camera section (hidden initially) -->
+        <div id="camera-section" class="govuk-!-margin-bottom-6" style="display: none;">
+          <h2 class="govuk-heading-m">Take your photo</h2>
+          <p class="govuk-body">Position your face in the frame and take a clear photo.</p>
+          
+          <div id="camera-container" style="position: relative; max-width: 400px; margin: 0 auto 20px;">
+            <video id="camera-video" autoplay playsinline style="width: 100%; border-radius: 8px; background: #000;"></video>
+            <canvas id="camera-canvas" style="display: none;"></canvas>
+            
+            <!-- Face frame overlay -->
+            <svg id="face-frame" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 70%; height: 70%; pointer-events: none;">
+              <ellipse cx="50%" cy="50%" rx="45%" ry="48%" fill="none" stroke="white" stroke-width="3" stroke-dasharray="10,5" opacity="0.8"/>
+            </svg>
+          </div>
+          
+          <div class="govuk-button-group">
+            <button type="button" class="govuk-button govuk-button--secondary" id="capture-btn" onclick="capturePhoto()" style="display: none;">
+              Take photo
+            </button>
+            <button type="button" class="govuk-button govuk-button--secondary" id="retake-btn" onclick="retakePhoto()" style="display: none;">
+              Retake photo
+            </button>
+          </div>
+          
+          <div id="captured-photo-container" style="display: none; max-width: 400px; margin: 0 auto;">
+            <img id="captured-photo" style="width: 100%; border-radius: 8px; border: 2px solid #00703c;" />
+            <p class="govuk-body govuk-!-margin-top-2" style="color: #00703c; font-weight: bold;">✓ Photo captured successfully</p>
+          </div>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button" id="continue-btn">
+          Continue
+        </button>
+
+        <p class="govuk-body">
+          <a href="/temp-code-duration" class="govuk-link">Back</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Get data from URL or sessionStorage
+    (function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const form = document.querySelector('form');
+      
+      let checkType = urlParams.get('check-type') || sessionStorage.getItem('checkType') || 'Over 18';
+      let recordCheck = urlParams.get('record-check') || sessionStorage.getItem('recordCheck') || 'yes';
+      let dataReturn = urlParams.get('data-return') || sessionStorage.getItem('dataReturn') || 'photo';
+      let duration = urlParams.get('duration') || sessionStorage.getItem('duration') || '1hour';
+      
+      // Store in sessionStorage
+      sessionStorage.setItem('checkType', checkType);
+      sessionStorage.setItem('recordCheck', recordCheck);
+      sessionStorage.setItem('dataReturn', dataReturn);
+      sessionStorage.setItem('duration', duration);
+      
+      // Display in summary
+      document.getElementById('check-type-summary').textContent = checkType;
+      document.getElementById('record-check-summary').textContent = recordCheck === 'yes' ? 'Yes' : 'No';
+      
+      // Data return display text
+      const dataReturnText = {
+        'none': 'No information',
+        'photo': 'Photo only',
+        'photo-name': 'Name and photo',
+        'name-dob': 'Full name and date of birth',
+        'name-dob-photo': 'Full name, date of birth, and photo',
+        'full': 'Full name, date of birth, photo, and nationality'
+      };
+      document.getElementById('data-return-summary').textContent = dataReturnText[dataReturn] || dataReturn;
+      
+      // Duration display text
+      const durationText = {
+        '1hour': '1 hour',
+        '1day': '1 day',
+        '3days': '3 days',
+        '7days': '7 days',
+        '30days': '30 days'
+      };
+      document.getElementById('duration-summary').textContent = durationText[duration] || duration;
+      
+      // Set hidden field values
+      document.getElementById('check-type-hidden').value = checkType;
+      document.getElementById('record-check-hidden').value = recordCheck;
+      document.getElementById('data-return-hidden').value = dataReturn;
+      document.getElementById('duration-hidden').value = duration;
+      
+      // Camera functionality
+      let videoStream = null;
+      let photoTaken = false;
+      
+      // Show/hide camera section based on selection
+      const enhancedYes = document.getElementById('enhanced-yes');
+      const enhancedNo = document.getElementById('enhanced-no');
+      const cameraSection = document.getElementById('camera-section');
+      const continueBtn = document.getElementById('continue-btn');
+      
+      enhancedYes.addEventListener('change', function() {
+        if (this.checked) {
+          cameraSection.style.display = 'block';
+          startCamera();
+          continueBtn.disabled = true;
+          continueBtn.classList.add('govuk-button--disabled');
+        }
+      });
+      
+      enhancedNo.addEventListener('change', function() {
+        if (this.checked) {
+          cameraSection.style.display = 'none';
+          stopCamera();
+          photoTaken = false;
+          continueBtn.disabled = false;
+          continueBtn.classList.remove('govuk-button--disabled');
+          document.getElementById('enhanced-hidden').value = 'no';
+        }
+      });
+      
+      // Start camera
+      window.startCamera = async function() {
+        try {
+          const video = document.getElementById('camera-video');
+          const captureBtn = document.getElementById('capture-btn');
+          
+          videoStream = await navigator.mediaDevices.getUserMedia({ 
+            video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 480 } } 
+          });
+          video.srcObject = videoStream;
+          captureBtn.style.display = 'inline-block';
+        } catch (err) {
+          alert('Unable to access camera. Please ensure you have granted camera permissions.');
+          console.error('Camera error:', err);
+        }
+      };
+      
+      // Stop camera
+      window.stopCamera = function() {
+        if (videoStream) {
+          videoStream.getTracks().forEach(track => track.stop());
+          videoStream = null;
+        }
+      };
+      
+      // Capture photo
+      window.capturePhoto = function() {
+        const video = document.getElementById('camera-video');
+        const canvas = document.getElementById('camera-canvas');
+        const capturedPhoto = document.getElementById('captured-photo');
+        const capturedPhotoContainer = document.getElementById('captured-photo-container');
+        const captureBtn = document.getElementById('capture-btn');
+        const retakeBtn = document.getElementById('retake-btn');
+        const faceFrame = document.getElementById('face-frame');
+        
+        // Set canvas size to match video
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        
+        // Draw video frame to canvas
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        
+        // Convert to image
+        const imageDataUrl = canvas.toDataURL('image/jpeg');
+        capturedPhoto.src = imageDataUrl;
+        
+        // Hide video, show captured photo
+        video.style.display = 'none';
+        faceFrame.style.display = 'none';
+        capturedPhotoContainer.style.display = 'block';
+        captureBtn.style.display = 'none';
+        retakeBtn.style.display = 'inline-block';
+        
+        // Enable continue button
+        photoTaken = true;
+        continueBtn.disabled = false;
+        continueBtn.classList.remove('govuk-button--disabled');
+        document.getElementById('enhanced-hidden').value = 'yes';
+        
+        // Stop camera stream
+        stopCamera();
+      };
+      
+      // Retake photo
+      window.retakePhoto = function() {
+        const video = document.getElementById('camera-video');
+        const capturedPhotoContainer = document.getElementById('captured-photo-container');
+        const captureBtn = document.getElementById('capture-btn');
+        const retakeBtn = document.getElementById('retake-btn');
+        const faceFrame = document.getElementById('face-frame');
+        
+        // Show video, hide captured photo
+        video.style.display = 'block';
+        faceFrame.style.display = 'block';
+        capturedPhotoContainer.style.display = 'none';
+        captureBtn.style.display = 'inline-block';
+        retakeBtn.style.display = 'none';
+        
+        // Disable continue button
+        photoTaken = false;
+        continueBtn.disabled = true;
+        continueBtn.classList.add('govuk-button--disabled');
+        
+        // Restart camera
+        startCamera();
+      };
+      
+      // Handle form submission
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const enhanced = document.querySelector('input[name="enhanced"]:checked').value;
+          
+          // Check if enhanced is yes but no photo taken
+          if (enhanced === 'yes' && !photoTaken) {
+            alert('Please take a photo before continuing.');
+            return;
+          }
+          
+          // Store in sessionStorage
+          sessionStorage.setItem('enhanced', enhanced);
+          
+          // Clean up camera
+          stopCamera();
+          
+          // Navigate to success page with all parameters
+          window.location.href = '/temp-code-success?check-type=' + encodeURIComponent(checkType) + 
+                                  '&record-check=' + encodeURIComponent(recordCheck) +
+                                  '&data-return=' + encodeURIComponent(dataReturn) +
+                                  '&duration=' + encodeURIComponent(duration) +
+                                  '&enhanced=' + encodeURIComponent(enhanced);
+        });
+      }
+    })();
+  </script>
+{% endblock %}
+
+

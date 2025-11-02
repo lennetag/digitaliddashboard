@@ -102,19 +102,19 @@
               </div>
               
               <!-- Identity verification options -->
-              <div class="govuk-radios__item identity-check-option" style="display: none;">
+              <div class="govuk-radios__item identity-check-option govuk-!-display-none">
                 <input class="govuk-radios__input" id="data-name-dob" name="data-return" type="radio" value="name-dob">
                 <label class="govuk-label govuk-radios__label" for="data-name-dob">
                   Full name and date of birth
                 </label>
               </div>
-              <div class="govuk-radios__item identity-check-option" style="display: none;">
+              <div class="govuk-radios__item identity-check-option govuk-!-display-none">
                 <input class="govuk-radios__input" id="data-name-dob-photo" name="data-return" type="radio" value="name-dob-photo">
                 <label class="govuk-label govuk-radios__label" for="data-name-dob-photo">
                   Full name, date of birth, and photo
                 </label>
               </div>
-              <div class="govuk-radios__item identity-check-option" style="display: none;">
+              <div class="govuk-radios__item identity-check-option govuk-!-display-none">
                 <input class="govuk-radios__input" id="data-full" name="data-return" type="radio" value="full">
                 <label class="govuk-label govuk-radios__label" for="data-full">
                   Full name, date of birth, photo, and nationality
@@ -163,14 +163,14 @@
       
       if (isIdentityCheck) {
         // Show identity options, hide age options
-        ageCheckOptions.forEach(el => el.style.display = 'none');
-        identityCheckOptions.forEach(el => el.style.display = 'block');
+        ageCheckOptions.forEach(el => el.classList.add('govuk-!-display-none'));
+        identityCheckOptions.forEach(el => el.classList.remove('govuk-!-display-none'));
         // Set default for identity check
         document.getElementById('data-name-dob-photo').checked = true;
       } else {
         // Show age options, hide identity options
-        ageCheckOptions.forEach(el => el.style.display = 'block');
-        identityCheckOptions.forEach(el => el.style.display = 'none');
+        ageCheckOptions.forEach(el => el.classList.remove('govuk-!-display-none'));
+        identityCheckOptions.forEach(el => el.classList.add('govuk-!-display-none'));
         // Set default for age check
         document.getElementById('data-photo').checked = true;
       }

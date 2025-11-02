@@ -206,6 +206,7 @@
       var recordCheck = urlParams.get('record-check') || 'yes';
       var dataReturn = urlParams.get('data-return') || 'photo-name';
       var duration = urlParams.get('duration') || '1hour';
+      var enhanced = urlParams.get('enhanced') || 'no';
 
       // Update heading with check type
       document.getElementById('code-heading').textContent = 'Your temporary ' + checkType + ' code';
@@ -296,6 +297,15 @@
           icon: '✕',
           color: '#d4351c',
           text: 'This check will not be recorded against your Digital ID'
+        });
+      }
+      
+      // Enhanced verification item
+      if (enhanced === 'yes') {
+        privacyItems.push({
+          icon: '✓',
+          color: '#00703c',
+          text: 'This code has enhanced verification with live photo confirmation'
         });
       }
       

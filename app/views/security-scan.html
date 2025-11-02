@@ -369,6 +369,11 @@
           <div class="value" id="data-sharing-option">None (verification only)</div>
         </div>
 
+        <div class="check-info" id="enhanced-container" style="display: none;">
+          <h3>Enhanced Verification</h3>
+          <div class="value" style="color: #00703c; font-weight: bold;">✓ Live photo confirmed</div>
+        </div>
+
         <div class="photo-container" id="photo-container" style="display: none;">
           <h3>Identity Photo</h3>
           <img id="identity-photo" src="" alt="Identity Photo">
@@ -540,6 +545,13 @@
       document.getElementById('name-container').style.display = 'none';
       document.getElementById('dob-container').style.display = 'none';
       document.getElementById('nationality-container').style.display = 'none';
+      document.getElementById('enhanced-container').style.display = 'none';
+      
+      // Randomly show enhanced verification 25% of the time
+      const showEnhanced = Math.random() < 0.25;
+      if (showEnhanced) {
+        document.getElementById('enhanced-container').style.display = 'block';
+      }
       
       // Determine check type and data sharing options based on dataOption
       // 0-2: Age checks (Over 18/Under 18)
