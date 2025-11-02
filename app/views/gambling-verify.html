@@ -109,8 +109,7 @@
     }
 
     .modal-overlay.hidden {
-      opacity: 0;
-      pointer-events: none;
+      display: none;
     }
 
     /* Modal */
@@ -439,11 +438,20 @@
     function showLinkInput() {
       document.getElementById('initial-step').style.display = 'none';
       document.getElementById('link-input-step').classList.add('active');
+      // Focus on input field
+      setTimeout(function() {
+        document.getElementById('verification-link').focus();
+      }, 100);
     }
 
     function showInitialStep() {
       document.getElementById('initial-step').style.display = 'block';
       document.getElementById('link-input-step').classList.remove('active');
+      // Reset the input and button
+      document.getElementById('verification-link').value = '';
+      var submitBtn = document.querySelector('.submit-button');
+      submitBtn.textContent = 'Verify Age';
+      submitBtn.disabled = false;
     }
 
     function verifyLink() {
@@ -455,18 +463,27 @@
       }
 
       // Simulate verification delay
-      document.querySelector('.submit-button').textContent = 'Verifying...';
-      document.querySelector('.submit-button').disabled = true;
+      var submitBtn = document.querySelector('.submit-button');
+      submitBtn.textContent = 'Verifying...';
+      submitBtn.disabled = true;
 
       setTimeout(function() {
+        // Hide link input step
         document.getElementById('link-input-step').classList.remove('active');
+        // Show success step
         document.getElementById('success-step').classList.add('active');
       }, 1500);
     }
 
     function closeModal() {
-      document.getElementById('modal-overlay').classList.add('hidden');
-      document.getElementById('main-content').classList.remove('blurred');
+      var modalOverlay = document.getElementById('modal-overlay');
+      var mainContent = document.getElementById('main-content');
+      
+      // Hide modal completely
+      modalOverlay.classList.add('hidden');
+      
+      // Remove blur from main content
+      mainContent.classList.remove('blurred');
       
       // Scroll to top smoothly
       window.scrollTo({ top: 0, behavior: 'smooth' });
