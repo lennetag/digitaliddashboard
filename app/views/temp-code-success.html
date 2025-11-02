@@ -325,7 +325,7 @@
       // Populate the list
       privacyItems.forEach(function(item) {
         var li = document.createElement('li');
-        li.innerHTML = '<span style="color: ' + item.color + '; font-weight: bold; margin-right: 10px;">' + 
+        li.innerHTML = '<span style="color: ' + item.color + '; font-weight: bold; display: inline-block; width: 20px; margin-right: 5px;">' + 
                        item.icon + '</span>' + item.text;
         li.style.marginBottom = '10px';
         privacyList.appendChild(li);
