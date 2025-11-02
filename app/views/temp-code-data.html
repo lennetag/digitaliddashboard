@@ -60,15 +60,7 @@
         </div>
       </dl>
 
-      <div class="govuk-warning-text">
-        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-        <strong class="govuk-warning-text__text">
-          <span class="govuk-visually-hidden">Warning</span>
-          This code will expire after 1 hour or after one use
-        </strong>
-      </div>
-
-      <form action="/temp-code-success" method="post" novalidate>
+      <form action="/temp-code-duration" method="post" novalidate>
         
         <!-- Hidden fields to pass data forward -->
         <input type="hidden" name="check-type" id="check-type-hidden">
@@ -118,7 +110,7 @@
         </div>
 
         <button class="govuk-button" data-module="govuk-button">
-          Create temporary code
+          Save and continue
         </button>
 
         <p class="govuk-body">

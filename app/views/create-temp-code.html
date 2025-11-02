@@ -29,62 +29,39 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">
-        What type of check is this for?
-      </h1>
-
-      <p class="govuk-body">
-        Start typing to see suggestions from the list of available check types.
-      </p>
-
       <form action="/temp-code-record" method="post" novalidate>
         
-        <!-- Check Type with Autocomplete -->
         <div class="govuk-form-group">
-          <label class="govuk-label" for="check-type">
-            Type of check
-          </label>
-          <input class="govuk-input govuk-input--width-30" id="check-type" name="check-type" type="text" autocomplete="off">
-          
-          <!-- Hidden select for data -->
-          <datalist id="check-types">
-            <!-- Employment & Immigration -->
-            <option value="Right-to-Work">
-            <option value="Visa Validity">
-            
-            <!-- Civic & Welfare -->
-            <option value="Benefit Eligibility">
-            <option value="Veteran Status">
-            
-            <!-- Transport & Licensing -->
-            <option value="Driving Eligibility">
-            <option value="Vehicle Ownership">
-            
-            <!-- Property & Residence -->
-            <option value="Address Confirmation">
-            <option value="Property Ownership">
-            
-            <!-- Health & Education -->
-            <option value="Works in NHS">
-            <option value="Is a Student">
-            
-            <!-- Business Representation -->
-            <option value="Director">
-            <option value="Authorised Officer">
-            
-            <!-- Age & Access Control -->
-            <option value="Over 18">
-            <option value="Under 18">
-            <option value="Under-18 Oyster">
-            
-            <!-- Criminality & Safeguarding -->
-            <option value="DBS clearance">
-            <option value="Care-worker clearance">
-          </datalist>
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                What type of check is this for?
+              </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="check-over18" name="check-type" type="radio" value="Over 18" checked>
+                <label class="govuk-label govuk-radios__label" for="check-over18">
+                  Over 18
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="check-under18" name="check-type" type="radio" value="Under 18">
+                <label class="govuk-label govuk-radios__label" for="check-under18">
+                  Under 18
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-inset-text">
+          <h3 class="govuk-heading-s">Future check types</h3>
+          <p class="govuk-body-s">We're working to add more verification options including: Driving licence status, Address confirmation, Work at NHS, Veteran identity, Director of a company, Right to Work, Visa type and validity, Benefit recipient, Vehicle ownership, Clean criminal record, Student identity, and Maternity exemption.</p>
         </div>
 
         <button class="govuk-button" data-module="govuk-button">
-          Continue
+          Save and continue
         </button>
 
         <p class="govuk-body">
@@ -95,38 +72,24 @@
   </div>
 
   <script>
-    // Simple typeahead functionality
+    // Handle form submission
     (function() {
-      var input = document.getElementById('check-type');
-      var datalist = document.getElementById('check-types');
       var form = document.querySelector('form');
       
-      if (input && datalist) {
-        input.setAttribute('list', 'check-types');
-        
-        // Load previous value if exists
-        var savedCheckType = sessionStorage.getItem('checkType');
-        if (savedCheckType) {
-          input.value = savedCheckType;
+      // Load previous value if exists
+      var savedCheckType = sessionStorage.getItem('checkType');
+      if (savedCheckType) {
+        var radioButton = document.querySelector('input[name="check-type"][value="' + savedCheckType + '"]');
+        if (radioButton) {
+          radioButton.checked = true;
         }
-        
-        // Add some visual feedback
-        input.addEventListener('input', function() {
-          if (this.value.length > 0) {
-            this.style.borderColor = '#1d70b8';
-            this.style.borderWidth = '2px';
-          } else {
-            this.style.borderColor = '';
-            this.style.borderWidth = '';
-          }
-        });
       }
       
       // Store value in sessionStorage on form submit
       if (form) {
         form.addEventListener('submit', function(e) {
           e.preventDefault();
-          var checkType = input.value || 'Right-to-Work';
+          var checkType = document.querySelector('input[name="check-type"]:checked').value;
           sessionStorage.setItem('checkType', checkType);
           // Navigate to next page with query parameter
           window.location.href = '/temp-code-record?check-type=' + encodeURIComponent(checkType);
