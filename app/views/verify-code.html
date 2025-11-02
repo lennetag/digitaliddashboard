@@ -1,0 +1,89 @@
+{% extends "govuk-prototype-kit/layouts/govuk-branded.html" %}
+
+{% block pageTitle %}
+  Enter your security code – GOV.UK One Login
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "GOV.UK One Login",
+    serviceUrl: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        Enter your security code
+      </h1>
+
+      <p class="govuk-body">
+        We've sent a 6-digit security code to your phone ending in 7890.
+      </p>
+
+      <p class="govuk-body">
+        It may take a few minutes to arrive.
+      </p>
+
+      <form action="/digital-id-home" method="post" novalidate>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="security-code">
+            Security code
+          </label>
+          <div class="govuk-hint">
+            For example, 123456
+          </div>
+          <input class="govuk-input govuk-input--width-10" id="security-code" name="security-code" type="text" inputmode="numeric" pattern="[0-9]*" spellcheck="false" autocomplete="one-time-code">
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Problems receiving your security code?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p class="govuk-body">
+            <a href="#" class="govuk-link">Request a new security code</a>
+          </p>
+          <p class="govuk-body">
+            Or choose a different way to receive your security code:
+          </p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="#" class="govuk-link">Use an authenticator app</a></li>
+            <li><a href="#" class="govuk-link">Use a security key</a></li>
+          </ul>
+        </div>
+      </details>
+
+      <p class="govuk-body">
+        <a href="/enter-password" class="govuk-link">Back</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // Auto-fill security code after 3 seconds (for prototype only)
+    setTimeout(function() {
+      var codeInput = document.getElementById('security-code');
+      if (codeInput) {
+        codeInput.value = '123456';
+        
+        // Add a visual flash to show the code was entered
+        codeInput.style.transition = 'background-color 0.3s';
+        codeInput.style.backgroundColor = '#ffe5cc';
+        setTimeout(function() {
+          codeInput.style.backgroundColor = '';
+        }, 600);
+      }
+    }, 3000);
+  </script>
+{% endblock %}
+

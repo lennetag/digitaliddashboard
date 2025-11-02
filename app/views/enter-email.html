@@ -1,0 +1,45 @@
+{% extends "govuk-prototype-kit/layouts/govuk-branded.html" %}
+
+{% block pageTitle %}
+  Enter your email address – GOV.UK One Login
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "GOV.UK One Login",
+    serviceUrl: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        Enter your email address to sign in to your GOV.UK One Login
+      </h1>
+
+      <p class="govuk-body">
+        We'll send you a code to confirm your email address.
+      </p>
+
+      <form action="/enter-password" method="post" novalidate>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="email">
+            Email address
+          </label>
+          <input class="govuk-input govuk-input--width-20" id="email" name="email" type="email" spellcheck="false" autocomplete="email">
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">Create a GOV.UK One Login</a>
+      </p>
+    </div>
+  </div>
+{% endblock %}
+

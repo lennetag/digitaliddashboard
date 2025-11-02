@@ -1,0 +1,159 @@
+{% extends "govuk-prototype-kit/layouts/govuk-branded.html" %}
+
+{% block pageTitle %}
+  Your GOV.UK One Login – GOV.UK One Login
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "GOV.UK One Login",
+    serviceUrl: "/digital-id-home",
+    navigation: [
+      {
+        href: "/digital-id-home",
+        text: "Home",
+        active: true
+      },
+      {
+        href: "#",
+        text: "Settings"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+        Your digital identity
+      </h1>
+
+      <p class="govuk-body-l">
+        Use your GOV.UK One Login to prove who you are and access government services.
+      </p>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h2 class="govuk-summary-card__title">
+                <a href="/view-identity" class="govuk-link govuk-link--no-visited-state">
+                  View your identity and connected government services 
+                </a>
+              </h2>
+            </div>
+            <div class="govuk-summary-card__content">
+              <p class="govuk-body">
+                See your identity details and which services are using your GOV.UK One Login.
+              </p>
+              <p class="govuk-body govuk-!-margin-bottom-0">
+                <strong>3 services</strong> connected
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="govuk-grid-column-one-half">
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h2 class="govuk-summary-card__title">
+                <a href="/create-temp-code" class="govuk-link govuk-link--no-visited-state">
+                  Create temporary identity code
+                </a>
+              </h2>
+            </div>
+            <div class="govuk-summary-card__content">
+              <p class="govuk-body govuk-!-margin-bottom-0">
+                Generate a temporary code to share your identity details with third parties securely.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h2 class="govuk-summary-card__title">
+                <a href="/history" class="govuk-link govuk-link--no-visited-state">
+                  See history of checks
+                </a>
+              </h2>
+            </div>
+            <div class="govuk-summary-card__content">
+              <p class="govuk-body">
+                View when and where your digital identity has been verified.
+              </p>
+              <p class="govuk-body govuk-!-margin-bottom-0">
+                Last check: <strong>Today at 2:15pm</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="govuk-grid-column-one-half">
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h2 class="govuk-summary-card__title">
+                <a href="/report-issue" class="govuk-link govuk-link--no-visited-state">
+                  Tell us about an issue with your identity
+                </a>
+              </h2>
+            </div>
+            <div class="govuk-summary-card__content">
+              <p class="govuk-body govuk-!-margin-bottom-0">
+                Report any problems with your identity details or if you think someone has accessed your account.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m">Recent activity</h2>
+      
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--s govuk-visually-hidden">
+          Recent activity on your account
+        </caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Service</th>
+            <th scope="col" class="govuk-table__header">Action</th>
+            <th scope="col" class="govuk-table__header">Date and time</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Apply for a passport</td>
+            <td class="govuk-table__cell">Identity verified</td>
+            <td class="govuk-table__cell">Today at 2:15pm</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Check your State Pension</td>
+            <td class="govuk-table__cell">Signed in</td>
+            <td class="govuk-table__cell">Yesterday at 9:30am</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Universal Credit</td>
+            <td class="govuk-table__cell">Identity verified</td>
+            <td class="govuk-table__cell">5 days ago at 11:45am</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="govuk-body">
+        <a href="/history" class="govuk-link">View full history</a>
+      </p>
+    </div>
+  </div>
+{% endblock %}
+
