@@ -78,31 +78,46 @@
               Choose how much information will be shared with the verifier
             </div>
             <div class="govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item">
+              <!-- Age verification options -->
+              <div class="govuk-radios__item age-check-option">
                 <input class="govuk-radios__input" id="data-none" name="data-return" type="radio" value="none">
                 <label class="govuk-label govuk-radios__label" for="data-none">
-                  None (verification only)
+                  No information
                 </label>
                 <div class="govuk-hint govuk-radios__hint">
-                  Confirms identity without sharing any personal details
+                  Confirms age without sharing any personal details
                 </div>
               </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="data-photo" name="data-return" type="radio" value="photo">
+              <div class="govuk-radios__item age-check-option">
+                <input class="govuk-radios__input" id="data-photo" name="data-return" type="radio" value="photo" checked>
                 <label class="govuk-label govuk-radios__label" for="data-photo">
                   Photo only
                 </label>
               </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="data-photo-name" name="data-return" type="radio" value="photo-name" checked>
+              <div class="govuk-radios__item age-check-option">
+                <input class="govuk-radios__input" id="data-photo-name" name="data-return" type="radio" value="photo-name">
                 <label class="govuk-label govuk-radios__label" for="data-photo-name">
-                  Photo and full name
+                  Name and photo
                 </label>
               </div>
-              <div class="govuk-radios__item">
+              
+              <!-- Identity verification options -->
+              <div class="govuk-radios__item identity-check-option" style="display: none;">
+                <input class="govuk-radios__input" id="data-name-dob" name="data-return" type="radio" value="name-dob">
+                <label class="govuk-label govuk-radios__label" for="data-name-dob">
+                  Full name and date of birth
+                </label>
+              </div>
+              <div class="govuk-radios__item identity-check-option" style="display: none;">
+                <input class="govuk-radios__input" id="data-name-dob-photo" name="data-return" type="radio" value="name-dob-photo">
+                <label class="govuk-label govuk-radios__label" for="data-name-dob-photo">
+                  Full name, date of birth, and photo
+                </label>
+              </div>
+              <div class="govuk-radios__item identity-check-option" style="display: none;">
                 <input class="govuk-radios__input" id="data-full" name="data-return" type="radio" value="full">
                 <label class="govuk-label govuk-radios__label" for="data-full">
-                  Photo, full name, date of birth and nationality
+                  Full name, date of birth, photo, and nationality
                 </label>
               </div>
             </div>
@@ -126,7 +141,7 @@
       const urlParams = new URLSearchParams(window.location.search);
       const form = document.querySelector('form');
       
-      let checkType = urlParams.get('check-type') || sessionStorage.getItem('checkType') || 'Right-to-Work';
+      let checkType = urlParams.get('check-type') || sessionStorage.getItem('checkType') || 'Over 18';
       let recordCheck = urlParams.get('record-check') || sessionStorage.getItem('recordCheck') || 'yes';
       
       // Store in sessionStorage
@@ -140,6 +155,25 @@
       // Set hidden field values
       document.getElementById('check-type-hidden').value = checkType;
       document.getElementById('record-check-hidden').value = recordCheck;
+      
+      // Show/hide options based on check type
+      const isIdentityCheck = checkType === 'Identity verification';
+      const ageCheckOptions = document.querySelectorAll('.age-check-option');
+      const identityCheckOptions = document.querySelectorAll('.identity-check-option');
+      
+      if (isIdentityCheck) {
+        // Show identity options, hide age options
+        ageCheckOptions.forEach(el => el.style.display = 'none');
+        identityCheckOptions.forEach(el => el.style.display = 'block');
+        // Set default for identity check
+        document.getElementById('data-name-dob-photo').checked = true;
+      } else {
+        // Show age options, hide identity options
+        ageCheckOptions.forEach(el => el.style.display = 'block');
+        identityCheckOptions.forEach(el => el.style.display = 'none');
+        // Set default for age check
+        document.getElementById('data-photo').checked = true;
+      }
       
       // Handle form submission
       if (form) {

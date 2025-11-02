@@ -254,11 +254,22 @@
         });
       } else {
         var sharingText = 'Your photo will be shared when this code is checked';
-        if (dataReturn === 'photo-name') {
+        
+        // Age verification options
+        if (dataReturn === 'photo') {
+          sharingText = 'Your photo will be shared when this code is checked';
+        } else if (dataReturn === 'photo-name') {
           sharingText = 'Your photo and full name will be shared when this code is checked';
-        } else if (dataReturn === 'full') {
-          sharingText = 'Your photo, full name, date of birth and nationality will be shared when this code is checked';
         }
+        // Identity verification options
+        else if (dataReturn === 'name-dob') {
+          sharingText = 'Your full name and date of birth will be shared when this code is checked';
+        } else if (dataReturn === 'name-dob-photo') {
+          sharingText = 'Your full name, date of birth, and photo will be shared when this code is checked';
+        } else if (dataReturn === 'full') {
+          sharingText = 'Your full name, date of birth, photo, and nationality will be shared when this code is checked';
+        }
+        
         privacyItems.push({
           icon: '✓',
           color: '#00703c',

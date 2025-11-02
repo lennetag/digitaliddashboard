@@ -471,8 +471,8 @@
       
       showSuccess(timeString, currentDataOption);
       
-      // Cycle to next option (0 -> 1 -> 2 -> 3 -> 0)
-      currentDataOption = (currentDataOption + 1) % 4;
+      // Cycle to next option (0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 0)
+      currentDataOption = (currentDataOption + 1) % 6;
     }
 
     function simulateNoLinkFound() {
@@ -541,32 +541,59 @@
       document.getElementById('dob-container').style.display = 'none';
       document.getElementById('nationality-container').style.display = 'none';
       
-      // Set data sharing option text
-      const dataSharingOptions = [
-        'None (verification only)',
-        'Photo only',
-        'Photo and full name',
-        'Photo, full name, date of birth and nationality'
-      ];
-      document.getElementById('data-sharing-option').textContent = dataSharingOptions[dataOption];
+      // Determine check type and data sharing options based on dataOption
+      // 0-2: Age checks (Over 18/Under 18)
+      // 3-5: Identity verification
+      let checkType;
+      let dataSharingText;
+      
+      if (dataOption <= 2) {
+        // Age verification
+        checkType = 'Over 18';
+        const ageOptions = [
+          'No information',
+          'Photo only',
+          'Name and photo'
+        ];
+        dataSharingText = ageOptions[dataOption];
+      } else {
+        // Identity verification
+        checkType = 'Identity verification';
+        const identityOptions = [
+          'Full name and date of birth',
+          'Full name, date of birth, and photo',
+          'Full name, date of birth, photo, and nationality'
+        ];
+        dataSharingText = identityOptions[dataOption - 3];
+      }
+      
+      // Update check type display
+      document.getElementById('check-type').textContent = checkType;
+      document.getElementById('data-sharing-option').textContent = dataSharingText;
       
       // Show fields based on data option
-      // 0 = none, 1 = photo, 2 = photo+name, 3 = full details
-      if (dataOption >= 1) {
-        // Show photo for options 1, 2, 3
+      // Age checks: 0 = none, 1 = photo, 2 = name+photo
+      // Identity checks: 3 = name+dob, 4 = name+dob+photo, 5 = name+dob+photo+nationality
+      
+      if (dataOption === 1 || dataOption === 2 || dataOption === 4 || dataOption === 5) {
+        // Show photo for options 1, 2, 4, 5
         document.getElementById('photo-container').style.display = 'block';
         const randomPhoto = photos[Math.floor(Math.random() * photos.length)];
         document.getElementById('identity-photo').src = randomPhoto;
       }
       
-      if (dataOption >= 2) {
-        // Show name for options 2, 3
+      if (dataOption === 2 || dataOption >= 3) {
+        // Show name for options 2, 3, 4, 5
         document.getElementById('name-container').style.display = 'block';
       }
       
       if (dataOption >= 3) {
-        // Show DOB and nationality for option 3
+        // Show DOB for options 3, 4, 5
         document.getElementById('dob-container').style.display = 'block';
+      }
+      
+      if (dataOption === 5) {
+        // Show nationality only for option 5
         document.getElementById('nationality-container').style.display = 'block';
       }
       
