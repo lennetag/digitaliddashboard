@@ -34,13 +34,13 @@
         </h2>
         <ul class="govuk-tabs__list">
           <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-            <a class="govuk-tabs__tab" href="#usage-adoption">
-              Usage & Adoption
+            <a class="govuk-tabs__tab" href="#usage-performance">
+              Usage & Performance
             </a>
           </li>
           <li class="govuk-tabs__list-item">
-            <a class="govuk-tabs__tab" href="#verification-performance">
-              Verification Performance
+            <a class="govuk-tabs__tab" href="#benefits">
+              Benefits
             </a>
           </li>
           <li class="govuk-tabs__list-item">
@@ -55,9 +55,9 @@
           </li>
         </ul>
 
-        <!-- Usage & Adoption Tab -->
-        <div class="govuk-tabs__panel" id="usage-adoption">
-          <h2 class="govuk-heading-l">Usage & Adoption</h2>
+        <!-- Usage & Performance Tab (merged) -->
+        <div class="govuk-tabs__panel" id="usage-performance">
+          <h2 class="govuk-heading-l">Usage & Performance</h2>
           
           <div class="govuk-grid-row">
             <div class="govuk-grid-column-one-quarter">
@@ -67,7 +67,7 @@
                 <p class="govuk-body-s govuk-!-margin-bottom-0">
                   <strong class="govuk-tag govuk-tag--blue">Growing</strong>
                 </p>
-                <p class="govuk-body-s govuk-!-margin-top-2">
+                <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">
                   All-time temporary codes. +18% vs last month
                 </p>
               </div>
@@ -80,7 +80,7 @@
                 <p class="govuk-body-s govuk-!-margin-bottom-0">
                   <strong class="govuk-tag govuk-tag--green">Healthy</strong>
                 </p>
-                <p class="govuk-body-s govuk-!-margin-top-2">
+                <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">
                   Monthly active users. 76% retention rate
                 </p>
               </div>
@@ -93,7 +93,7 @@
                 <p class="govuk-body-s govuk-!-margin-bottom-0">
                   <strong class="govuk-tag govuk-tag--green">Healthy</strong>
                 </p>
-                <p class="govuk-body-s govuk-!-margin-top-2">
+                <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">
                   Codes checked this month. +22% vs last month
                 </p>
               </div>
@@ -106,7 +106,7 @@
                 <p class="govuk-body-s govuk-!-margin-bottom-0">
                   <strong class="govuk-tag govuk-tag--green">Healthy</strong>
                 </p>
-                <p class="govuk-body-s govuk-!-margin-top-2">
+                <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">
                   Successful verifications. +1.2% vs last month
                 </p>
               </div>
@@ -153,146 +153,25 @@
               </span>
             </summary>
             <div class="govuk-details__text">
-              <div class="simple-bar-chart">
-                <div class="chart-bar" style="width: 60.5%;">
-                  <span class="chart-label">Over 18: 60.5%</span>
+              <div class="simple-bar-chart" style="max-width: 600px;">
+                <div style="margin-bottom: 15px;">
+                  <div style="background: #1d70b8; color: white; padding: 10px; width: 60.5%; min-width: 100px; border-radius: 4px;">
+                    Over 18: 60.5%
+                  </div>
                 </div>
-                <div class="chart-bar" style="width: 33.8%;">
-                  <span class="chart-label">Identity: 33.8%</span>
+                <div style="margin-bottom: 15px;">
+                  <div style="background: #1d70b8; color: white; padding: 10px; width: 33.8%; min-width: 100px; border-radius: 4px;">
+                    Identity: 33.8%
+                  </div>
                 </div>
-                <div class="chart-bar" style="width: 5.7%;">
-                  <span class="chart-label">Under 18: 5.7%</span>
+                <div style="margin-bottom: 15px;">
+                  <div style="background: #1d70b8; color: white; padding: 10px; width: 5.7%; min-width: 100px; border-radius: 4px;">
+                    Under 18: 5.7%
+                  </div>
                 </div>
               </div>
             </div>
           </details>
-
-          <h3 class="govuk-heading-m govuk-!-margin-top-6">Code creation over time</h3>
-          
-          <table class="govuk-table">
-            <thead class="govuk-table__head">
-              <tr class="govuk-table__row">
-                <th scope="col" class="govuk-table__header">Month</th>
-                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Codes created</th>
-                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Change</th>
-                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Growth %</th>
-              </tr>
-            </thead>
-            <tbody class="govuk-table__body">
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell">October 2025</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">142,300</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">+21,500</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">+17.8%</td>
-              </tr>
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell">September 2025</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">120,800</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">+16,200</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">+15.5%</td>
-              </tr>
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell">August 2025</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">104,600</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">+12,800</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">+13.9%</td>
-              </tr>
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell">July 2025</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">91,800</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">+9,400</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">+11.4%</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <details class="govuk-details" data-module="govuk-details">
-            <summary class="govuk-details__summary">
-              <span class="govuk-details__summary-text">
-                View as chart
-              </span>
-            </summary>
-            <div class="govuk-details__text">
-              <div class="line-graph">
-                <svg viewBox="0 0 400 200" style="width: 100%; max-width: 600px;">
-                  <polyline
-                    points="50,150 150,120 250,90 350,50"
-                    fill="none"
-                    stroke="#1d70b8"
-                    stroke-width="3"
-                  />
-                  <circle cx="50" cy="150" r="4" fill="#1d70b8"/>
-                  <circle cx="150" cy="120" r="4" fill="#1d70b8"/>
-                  <circle cx="250" cy="90" r="4" fill="#1d70b8"/>
-                  <circle cx="350" cy="50" r="4" fill="#1d70b8"/>
-                  <text x="50" y="180" text-anchor="middle" font-size="12">Jul</text>
-                  <text x="150" y="180" text-anchor="middle" font-size="12">Aug</text>
-                  <text x="250" y="180" text-anchor="middle" font-size="12">Sep</text>
-                  <text x="350" y="180" text-anchor="middle" font-size="12">Oct</text>
-                </svg>
-              </div>
-            </div>
-          </details>
-
-        </div>
-
-        <!-- Verification Performance Tab -->
-        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="verification-performance">
-          <h2 class="govuk-heading-l">Verification Performance</h2>
-          
-          <div class="govuk-grid-row">
-            <div class="govuk-grid-column-one-quarter">
-              <div class="dashboard-metric">
-                <h3 class="govuk-heading-m govuk-!-margin-bottom-2">Total checks</h3>
-                <p class="metric-value govuk-!-font-size-48 govuk-!-font-weight-bold govuk-!-margin-bottom-1">1.2M</p>
-                <p class="govuk-body-s govuk-!-margin-bottom-0">
-                  <strong class="govuk-tag govuk-tag--blue">Growing</strong>
-                </p>
-                <p class="govuk-body-s govuk-!-margin-top-2">
-                  Verification attempts this month
-                </p>
-              </div>
-            </div>
-
-            <div class="govuk-grid-column-one-quarter">
-              <div class="dashboard-metric">
-                <h3 class="govuk-heading-m govuk-!-margin-bottom-2">Successful checks</h3>
-                <p class="metric-value govuk-!-font-size-48 govuk-!-font-weight-bold govuk-!-margin-bottom-1">1.13M</p>
-                <p class="govuk-body-s govuk-!-margin-bottom-0">
-                  <strong class="govuk-tag govuk-tag--green">Healthy</strong>
-                </p>
-                <p class="govuk-body-s govuk-!-margin-top-2">
-                  94.2% success rate
-                </p>
-              </div>
-            </div>
-
-            <div class="govuk-grid-column-one-quarter">
-              <div class="dashboard-metric">
-                <h3 class="govuk-heading-m govuk-!-margin-bottom-2">Failed checks</h3>
-                <p class="metric-value govuk-!-font-size-48 govuk-!-font-weight-bold govuk-!-margin-bottom-1">69.6K</p>
-                <p class="govuk-body-s govuk-!-margin-bottom-0">
-                  <strong class="govuk-tag govuk-tag--orange">Monitor</strong>
-                </p>
-                <p class="govuk-body-s govuk-!-margin-top-2">
-                  5.8% failure rate
-                </p>
-              </div>
-            </div>
-
-            <div class="govuk-grid-column-one-quarter">
-              <div class="dashboard-metric">
-                <h3 class="govuk-heading-m govuk-!-margin-bottom-2">Avg check time</h3>
-                <p class="metric-value govuk-!-font-size-48 govuk-!-font-weight-bold govuk-!-margin-bottom-1">1.8s</p>
-                <p class="govuk-body-s govuk-!-margin-bottom-0">
-                  <strong class="govuk-tag govuk-tag--green">Healthy</strong>
-                </p>
-                <p class="govuk-body-s govuk-!-margin-top-2">
-                  Time to complete verification
-                </p>
-              </div>
-            </div>
-          </div>
 
           <h3 class="govuk-heading-m govuk-!-margin-top-6">Check outcomes</h3>
           
@@ -348,52 +227,312 @@
               </span>
             </summary>
             <div class="govuk-details__text">
-              <div class="simple-bar-chart">
-                <div class="chart-bar" style="width: 94.2%; background: #00703c;">
-                  <span class="chart-label">Success: 94.2%</span>
+              <div class="simple-bar-chart" style="max-width: 600px;">
+                <div style="margin-bottom: 15px;">
+                  <div style="background: #00703c; color: white; padding: 10px; width: 94.2%; border-radius: 4px;">
+                    Success: 94.2%
+                  </div>
                 </div>
-                <div class="chart-bar" style="width: 3.2%; background: #d4351c;">
-                  <span class="chart-label">Expired: 3.2%</span>
+                <div style="margin-bottom: 15px;">
+                  <div style="background: #f47738; color: white; padding: 10px; width: 3.2%; min-width: 80px; border-radius: 4px;">
+                    Expired: 3.2%
+                  </div>
                 </div>
-                <div class="chart-bar" style="width: 2.0%; background: #f47738;">
-                  <span class="chart-label">Invalid: 2.0%</span>
+                <div style="margin-bottom: 15px;">
+                  <div style="background: #d4351c; color: white; padding: 10px; width: 2.0%; min-width: 80px; border-radius: 4px;">
+                    Invalid: 2.0%
+                  </div>
                 </div>
-                <div class="chart-bar" style="width: 0.6%; background: #505a5f;">
-                  <span class="chart-label">Error: 0.6%</span>
+                <div style="margin-bottom: 15px;">
+                  <div style="background: #505a5f; color: white; padding: 10px; width: 0.6%; min-width: 80px; border-radius: 4px;">
+                    Error: 0.6%
+                  </div>
                 </div>
               </div>
             </div>
           </details>
 
-          <h3 class="govuk-heading-m govuk-!-margin-top-6">Enhanced verification usage</h3>
+          <h3 class="govuk-heading-m govuk-!-margin-top-6">Code creation over time</h3>
           
           <table class="govuk-table">
             <thead class="govuk-table__head">
               <tr class="govuk-table__row">
-                <th scope="col" class="govuk-table__header">Check type</th>
-                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Total</th>
-                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Enhanced</th>
-                <th scope="col" class="govuk-table__header govuk-table__header--numeric">% Enhanced</th>
+                <th scope="col" class="govuk-table__header">Month</th>
+                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Codes created</th>
+                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Change</th>
+                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Growth %</th>
               </tr>
             </thead>
             <tbody class="govuk-table__body">
               <tr class="govuk-table__row">
-                <td class="govuk-table__cell">Over 18</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">512,340</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">102,468</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">20.0%</td>
+                <td class="govuk-table__cell">October 2025</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">142,300</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">+21,500</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">+17.8%</td>
               </tr>
               <tr class="govuk-table__row">
-                <td class="govuk-table__cell">Identity verification</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">286,120</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">200,284</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">70.0%</td>
+                <td class="govuk-table__cell">September 2025</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">120,800</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">+16,200</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">+15.5%</td>
               </tr>
               <tr class="govuk-table__row">
-                <td class="govuk-table__cell">Under 18</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">48,540</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">7,281</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">15.0%</td>
+                <td class="govuk-table__cell">August 2025</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">104,600</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">+12,800</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">+13.9%</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">July 2025</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">91,800</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">+9,400</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">+11.4%</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                View as chart
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <div style="max-width: 600px;">
+                <svg viewBox="0 0 500 250" style="width: 100%; height: auto;">
+                  <!-- Grid lines -->
+                  <line x1="50" y1="200" x2="450" y2="200" stroke="#b1b4b6" stroke-width="1"/>
+                  <line x1="50" y1="150" x2="450" y2="150" stroke="#b1b4b6" stroke-width="1" stroke-dasharray="3,3"/>
+                  <line x1="50" y1="100" x2="450" y2="100" stroke="#b1b4b6" stroke-width="1" stroke-dasharray="3,3"/>
+                  <line x1="50" y1="50" x2="450" y2="50" stroke="#b1b4b6" stroke-width="1" stroke-dasharray="3,3"/>
+                  
+                  <!-- Line graph -->
+                  <polyline
+                    points="100,180 200,145 300,110 400,60"
+                    fill="none"
+                    stroke="#1d70b8"
+                    stroke-width="3"
+                  />
+                  
+                  <!-- Data points -->
+                  <circle cx="100" cy="180" r="5" fill="#1d70b8"/>
+                  <circle cx="200" cy="145" r="5" fill="#1d70b8"/>
+                  <circle cx="300" cy="110" r="5" fill="#1d70b8"/>
+                  <circle cx="400" cy="60" r="5" fill="#1d70b8"/>
+                  
+                  <!-- Labels -->
+                  <text x="100" y="220" text-anchor="middle" font-size="12" fill="#0b0c0c">Jul</text>
+                  <text x="200" y="220" text-anchor="middle" font-size="12" fill="#0b0c0c">Aug</text>
+                  <text x="300" y="220" text-anchor="middle" font-size="12" fill="#0b0c0c">Sep</text>
+                  <text x="400" y="220" text-anchor="middle" font-size="12" fill="#0b0c0c">Oct</text>
+                </svg>
+              </div>
+            </div>
+          </details>
+
+          <h3 class="govuk-heading-m govuk-!-margin-top-6">Non-digital support</h3>
+          
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+              <div class="dashboard-metric">
+                <h4 class="govuk-heading-s govuk-!-margin-bottom-2">Helpline calls</h4>
+                <p class="metric-value govuk-!-font-size-36 govuk-!-font-weight-bold govuk-!-margin-bottom-1">14,200</p>
+                <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">
+                  This month. 68% resolved first contact
+                </p>
+              </div>
+            </div>
+
+            <div class="govuk-grid-column-one-third">
+              <div class="dashboard-metric">
+                <h4 class="govuk-heading-s govuk-!-margin-bottom-2">Assisted digital sessions</h4>
+                <p class="metric-value govuk-!-font-size-36 govuk-!-font-weight-bold govuk-!-margin-bottom-1">3,840</p>
+                <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">
+                  Face-to-face support sessions completed
+                </p>
+              </div>
+            </div>
+
+            <div class="govuk-grid-column-one-third">
+              <div class="dashboard-metric">
+                <h4 class="govuk-heading-s govuk-!-margin-bottom-2">Paper forms processed</h4>
+                <p class="metric-value govuk-!-font-size-36 govuk-!-font-weight-bold govuk-!-margin-bottom-1">1,920</p>
+                <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">
+                  Alternative access method for offline users
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Benefits Tab -->
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="benefits">
+          <h2 class="govuk-heading-l">Benefits & Impact</h2>
+          
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+              <div class="dashboard-metric">
+                <h3 class="govuk-heading-m govuk-!-margin-bottom-2">Cost savings</h3>
+                <p class="metric-value govuk-!-font-size-48 govuk-!-font-weight-bold govuk-!-margin-bottom-1">£18.4M</p>
+                <p class="govuk-body-s govuk-!-margin-bottom-0">
+                  <strong class="govuk-tag govuk-tag--green">High confidence</strong>
+                </p>
+                <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">
+                  Annual savings vs traditional verification methods
+                </p>
+              </div>
+            </div>
+
+            <div class="govuk-grid-column-one-third">
+              <div class="dashboard-metric">
+                <h3 class="govuk-heading-m govuk-!-margin-bottom-2">Cost per check</h3>
+                <p class="metric-value govuk-!-font-size-48 govuk-!-font-weight-bold govuk-!-margin-bottom-1">£0.03</p>
+                <p class="govuk-body-s govuk-!-margin-bottom-0">
+                  <strong class="govuk-tag govuk-tag--green">High confidence</strong>
+                </p>
+                <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">
+                  Per verified user. 94% cheaper than manual checks
+                </p>
+              </div>
+            </div>
+
+            <div class="govuk-grid-column-one-third">
+              <div class="dashboard-metric">
+                <h3 class="govuk-heading-m govuk-!-margin-bottom-2">Fraud prevented</h3>
+                <p class="metric-value govuk-!-font-size-48 govuk-!-font-weight-bold govuk-!-margin-bottom-1">£42M</p>
+                <p class="govuk-body-s govuk-!-margin-bottom-0">
+                  <strong class="govuk-tag govuk-tag--blue">Medium confidence</strong>
+                </p>
+                <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">
+                  Estimated fraud prevented through enhanced verification
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="govuk-heading-m govuk-!-margin-top-6">Cost breakdown</h3>
+          
+          <table class="govuk-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Cost category</th>
+                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Annual cost</th>
+                <th scope="col" class="govuk-table__header govuk-table__header--numeric">% of Total</th>
+                <th scope="col" class="govuk-table__header">Trend</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Infrastructure</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£8,200,000</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">54%</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--grey">Stable</strong>
+                </td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Staff</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£4,600,000</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">30%</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--grey">Stable</strong>
+                </td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Support services</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£1,800,000</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">12%</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--green">Decreasing</strong>
+                </td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Third-party services</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£600,000</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">4%</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--grey">Stable</strong>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                View as chart
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <div class="simple-bar-chart" style="max-width: 600px;">
+                <div style="margin-bottom: 15px;">
+                  <div style="background: #1d70b8; color: white; padding: 10px; width: 54%; min-width: 120px; border-radius: 4px;">
+                    Infrastructure: 54%
+                  </div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                  <div style="background: #1d70b8; color: white; padding: 10px; width: 30%; min-width: 100px; border-radius: 4px;">
+                    Staff: 30%
+                  </div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                  <div style="background: #1d70b8; color: white; padding: 10px; width: 12%; min-width: 100px; border-radius: 4px;">
+                    Support: 12%
+                  </div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                  <div style="background: #1d70b8; color: white; padding: 10px; width: 4%; min-width: 100px; border-radius: 4px;">
+                    Third-party: 4%
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <h3 class="govuk-heading-m govuk-!-margin-top-6">Benefits summary</h3>
+          
+          <table class="govuk-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Benefit</th>
+                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Annual value</th>
+                <th scope="col" class="govuk-table__header">Confidence</th>
+                <th scope="col" class="govuk-table__header">Notes</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Reduced verification costs</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£18,400,000</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--green">High (85%)</strong>
+                </td>
+                <td class="govuk-table__cell">Savings vs manual processing</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Fraud prevention</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£42,000,000</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--blue">Medium (65%)</strong>
+                </td>
+                <td class="govuk-table__cell">Enhanced verification reduces identity fraud</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Faster processing times</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£6,800,000</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--green">High (80%)</strong>
+                </td>
+                <td class="govuk-table__cell">Reduced waiting times for services</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Reduced call centre volume</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">£3,200,000</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--blue">Medium (70%)</strong>
+                </td>
+                <td class="govuk-table__cell">Fewer identity-related queries</td>
               </tr>
             </tbody>
           </table>
@@ -412,7 +551,7 @@
                 <p class="govuk-body-s govuk-!-margin-bottom-0">
                   <strong class="govuk-tag govuk-tag--blue">Growing</strong>
                 </p>
-                <p class="govuk-body-s govuk-!-margin-top-2">
+                <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">
                   Total registered accounts
                 </p>
               </div>
@@ -425,7 +564,7 @@
                 <p class="govuk-body-s govuk-!-margin-bottom-0">
                   <strong class="govuk-tag govuk-tag--green">Healthy</strong>
                 </p>
-                <p class="govuk-body-s govuk-!-margin-top-2">
+                <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">
                   Codes with enhanced verification
                 </p>
               </div>
@@ -438,7 +577,7 @@
                 <p class="govuk-body-s govuk-!-margin-bottom-0">
                   <strong class="govuk-tag govuk-tag--green">Healthy</strong>
                 </p>
-                <p class="govuk-body-s govuk-!-margin-top-2">
+                <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">
                   Total connected ID sources
                 </p>
               </div>
@@ -451,7 +590,7 @@
                 <p class="govuk-body-s govuk-!-margin-bottom-0">
                   <strong class="govuk-tag govuk-tag--green">Healthy</strong>
                 </p>
-                <p class="govuk-body-s govuk-!-margin-top-2">
+                <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">
                   Average sources per user
                 </p>
               </div>
@@ -504,109 +643,154 @@
               </span>
             </summary>
             <div class="govuk-details__text">
-              <div class="simple-bar-chart">
-                <div class="chart-bar" style="width: 16%;">
-                  <span class="chart-label">18-24: 16%</span>
+              <div class="simple-bar-chart" style="max-width: 600px;">
+                <div style="margin-bottom: 15px;">
+                  <div style="background: #1d70b8; color: white; padding: 10px; width: 16%; min-width: 80px; border-radius: 4px;">
+                    18-24: 16%
+                  </div>
                 </div>
-                <div class="chart-bar" style="width: 28%;">
-                  <span class="chart-label">25-34: 28%</span>
+                <div style="margin-bottom: 15px;">
+                  <div style="background: #1d70b8; color: white; padding: 10px; width: 28%; min-width: 100px; border-radius: 4px;">
+                    25-34: 28%
+                  </div>
                 </div>
-                <div class="chart-bar" style="width: 23%;">
-                  <span class="chart-label">35-44: 23%</span>
+                <div style="margin-bottom: 15px;">
+                  <div style="background: #1d70b8; color: white; padding: 10px; width: 23%; min-width: 90px; border-radius: 4px;">
+                    35-44: 23%
+                  </div>
                 </div>
-                <div class="chart-bar" style="width: 33%;">
-                  <span class="chart-label">45+: 33%</span>
+                <div style="margin-bottom: 15px;">
+                  <div style="background: #1d70b8; color: white; padding: 10px; width: 33%; min-width: 100px; border-radius: 4px;">
+                    45+: 33%
+                  </div>
                 </div>
               </div>
             </div>
           </details>
 
-          <h3 class="govuk-heading-m govuk-!-margin-top-6">Connected ID sources</h3>
-          
-          <table class="govuk-table">
-            <thead class="govuk-table__head">
-              <tr class="govuk-table__row">
-                <th scope="col" class="govuk-table__header">ID source</th>
-                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Connections</th>
-                <th scope="col" class="govuk-table__header govuk-table__header--numeric">% of Users</th>
-                <th scope="col" class="govuk-table__header">Type</th>
-              </tr>
-            </thead>
-            <tbody class="govuk-table__body">
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell">GOV.UK One Login</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">2,800,000</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">100%</td>
-                <td class="govuk-table__cell">
-                  <strong class="govuk-tag govuk-tag--blue">Auto</strong>
-                </td>
-              </tr>
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell">Passport</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">980,000</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">35%</td>
-                <td class="govuk-table__cell">
-                  <strong class="govuk-tag govuk-tag--grey">Mixed</strong>
-                </td>
-              </tr>
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell">Driving Licence</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">308,000</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">11%</td>
-                <td class="govuk-table__cell">
-                  <strong class="govuk-tag govuk-tag--grey">Manual</strong>
-                </td>
-              </tr>
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell">Visas & Immigration</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">112,000</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">4%</td>
-                <td class="govuk-table__cell">
-                  <strong class="govuk-tag govuk-tag--grey">Manual</strong>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
         </div>
 
         <!-- Roadmap Tab -->
         <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="roadmap">
-          <h2 class="govuk-heading-l">Roadmap</h2>
+          <h2 class="govuk-heading-l">Roadmap & Future Development</h2>
           
           <p class="govuk-body">
-            Key milestones and future development plans for Digital ID service
+            Key milestones and future development plans for the Digital ID service. This roadmap represents our current strategic direction and may evolve based on user needs and government priorities.
           </p>
 
-          <h3 class="govuk-heading-m govuk-!-margin-top-6">Completed</h3>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>Age verification (Over 18, Under 18)</li>
-            <li>Identity verification</li>
-            <li>Enhanced verification with live photo</li>
-            <li>Temporary code generation</li>
-            <li>QR code scanning</li>
-          </ul>
+          <h3 class="govuk-heading-m govuk-!-margin-top-6">✓ Completed (Q1-Q3 2024)</h3>
+          
+          <div class="govuk-inset-text">
+            <h4 class="govuk-heading-s">Phase 1: Core Identity & Age Verification</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              <li><strong>Age verification</strong> - Over 18 and Under 18 checks with privacy-preserving options</li>
+              <li><strong>Identity verification</strong> - Full identity confirmation with configurable data sharing</li>
+              <li><strong>Enhanced verification</strong> - Live photo capture for high-confidence identity checks</li>
+              <li><strong>Temporary code generation</strong> - Time-limited, single-use verification codes</li>
+              <li><strong>QR code scanning</strong> - In-person verification via mobile devices</li>
+              <li><strong>GOV.UK One Login integration</strong> - Seamless connection to existing government identity system</li>
+            </ul>
+          </div>
 
-          <h3 class="govuk-heading-m govuk-!-margin-top-6">In Progress</h3>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>Connected ID sources management</li>
-            <li>Address confirmation verification</li>
-            <li>Right to Work checks</li>
-            <li>Driving licence status verification</li>
-          </ul>
+          <h3 class="govuk-heading-m govuk-!-margin-top-6">🔨 In Progress (Q4 2024)</h3>
+          
+          <div class="govuk-inset-text">
+            <h4 class="govuk-heading-s">Phase 2: Connected Services & Private Sector Expansion</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              <li><strong>Connected ID sources management</strong> - User interface to view, add, and remove ID sources (Passport, Driving Licence, Visas)</li>
+              <li><strong>Address confirmation verification</strong> - Prove current address from driving licence or electoral roll</li>
+              <li><strong>Right to Work checks</strong> - Instant employment eligibility verification for employers</li>
+              <li><strong>Private sector pilot</strong> - Banking and financial services integration trials</li>
+              <li><strong>Mobile app development</strong> - Native iOS and Android applications</li>
+            </ul>
+          </div>
 
-          <h3 class="govuk-heading-m govuk-!-margin-top-6">Planned</h3>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>NHS employment verification</li>
-            <li>Veteran identity confirmation</li>
-            <li>Company director verification</li>
-            <li>Visa type and validity checks</li>
-            <li>Benefit recipient status</li>
-            <li>Vehicle ownership verification</li>
-            <li>DBS clearance checks</li>
-            <li>Student identity verification</li>
-            <li>Maternity exemption status</li>
-          </ul>
+          <h3 class="govuk-heading-m govuk-!-margin-top-6">📅 Planned Q1-Q2 2025</h3>
+          
+          <div class="govuk-inset-text">
+            <h4 class="govuk-heading-s">Phase 3: Extended Verification Services</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              <li><strong>Driving licence status verification</strong> - Check driving eligibility, points, and endorsements</li>
+              <li><strong>NHS employment verification</strong> - Confirm employment at NHS trusts and organizations</li>
+              <li><strong>Veteran identity confirmation</strong> - Verify military service and access veteran benefits</li>
+              <li><strong>Company director verification</strong> - Prove directorship status via Companies House</li>
+              <li><strong>Student identity verification</strong> - Confirm student status for discounts and services</li>
+              <li><strong>Biometric enhancements</strong> - Facial recognition and liveness detection improvements</li>
+            </ul>
+          </div>
+
+          <h3 class="govuk-heading-m govuk-!-margin-top-6">🔮 Future (Q3 2025 onwards)</h3>
+          
+          <div class="govuk-inset-text">
+            <h4 class="govuk-heading-s">Phase 4: Comprehensive Identity Ecosystem</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              <li><strong>Visa type and validity checks</strong> - Immigration status verification for employers and landlords</li>
+              <li><strong>Benefit recipient status</strong> - Confirm eligibility for social benefits and support</li>
+              <li><strong>Vehicle ownership verification</strong> - Prove vehicle ownership via DVLA</li>
+              <li><strong>DBS clearance checks</strong> - Disclosure and Barring Service status verification</li>
+              <li><strong>Maternity exemption status</strong> - Healthcare cost exemption confirmation</li>
+              <li><strong>Professional qualifications</strong> - Verify teaching, medical, and professional certifications</li>
+              <li><strong>International interoperability</strong> - EU Digital Identity Wallet integration</li>
+              <li><strong>Blockchain anchoring</strong> - Decentralized verification proof storage</li>
+              <li><strong>Zero-knowledge proofs</strong> - Advanced privacy-preserving verification methods</li>
+              <li><strong>Delegated access</strong> - Allow trusted representatives to act on behalf of users</li>
+            </ul>
+          </div>
+
+          <h3 class="govuk-heading-m govuk-!-margin-top-6">Key Delivery Milestones</h3>
+          
+          <table class="govuk-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Milestone</th>
+                <th scope="col" class="govuk-table__header">Target Date</th>
+                <th scope="col" class="govuk-table__header">Status</th>
+                <th scope="col" class="govuk-table__header">Impact</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Private sector API launch</td>
+                <td class="govuk-table__cell">December 2024</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--blue">On track</strong>
+                </td>
+                <td class="govuk-table__cell">High - enables banks, insurance, utilities</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Mobile app release</td>
+                <td class="govuk-table__cell">January 2025</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--blue">On track</strong>
+                </td>
+                <td class="govuk-table__cell">High - improves accessibility and adoption</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Right to Work/Rent integration</td>
+                <td class="govuk-table__cell">March 2025</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--blue">On track</strong>
+                </td>
+                <td class="govuk-table__cell">High - critical business need</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">EU Wallet interoperability</td>
+                <td class="govuk-table__cell">September 2025</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--grey">Planning</strong>
+                </td>
+                <td class="govuk-table__cell">Medium - international travel and work</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="govuk-warning-text govuk-!-margin-top-6">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-visually-hidden">Important</span>
+              This roadmap is subject to change based on user research, technical feasibility, and government priorities. All dates are indicative and may be adjusted.
+            </strong>
+          </div>
 
         </div>
 
